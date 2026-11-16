@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ControlCash - Controle Financeiro Inteligente</title>
+    <title>ControlCash - Sistema Financeiro Integrado</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        panel: '#090514',
-                        card: '#130a24',
-                    }
+                    colors: { panel: '#090514', card: '#130a24' }
                 }
             }
         }
@@ -27,215 +24,239 @@
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 mx-auto flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-purple-500/30">C</div>
             <div>
                 <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">ControlCash</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Acesse suas finanças com segurança absoluta</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Acesse seu painel financeiro com segurança</p>
             </div>
             <form onsubmit="fazerLogin(event)" class="space-y-4 text-left">
                 <div>
                     <label class="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">E-mail</label>
-                    <input type="email" id="login-email" required placeholder="seu@email.com" class="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/50 rounded-xl p-3 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:border-purple-500">
+                    <input type="email" id="login-email" required placeholder="seu@email.com" class="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/50 rounded-xl p-3 text-sm text-slate-800 dark:text-slate-200">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Senha</label>
-                    <input type="password" id="login-senha" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/50 rounded-xl p-3 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:border-purple-500">
+                    <input type="password" id="login-senha" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/50 rounded-xl p-3 text-sm text-slate-800 dark:text-slate-200">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium py-3 rounded-xl text-sm transition shadow-lg shadow-purple-600/20">Entrar no Sistema</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-3 rounded-xl text-sm shadow-lg shadow-purple-600/20">Entrar no Sistema</button>
             </form>
-            <div class="relative flex py-2 items-center"><div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div><span class="flex-shrink mx-4 text-xs text-slate-400">ou</span><div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div></div>
-            <button onclick="loginComGoogle()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 font-medium py-3 rounded-xl text-sm transition flex items-center justify-center gap-3 shadow-sm">
-                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-                Continuar com a Conta Google
-            </button>
+            <button onclick="loginComGoogle()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium py-3 rounded-xl text-sm flex items-center justify-center gap-3">Continuar com a Conta Google</button>
         </div>
     </div>
 
-    <!-- NAVBAR SUPERIOR PROFISSIONAL (Estilo Referência) -->
+    <!-- NAVBAR SUPERIOR PROFISSIONAL -->
     <header class="bg-white/90 dark:bg-[#0b0517]/90 backdrop-blur-md border-b border-slate-200 dark:border-purple-900/30 sticky top-0 z-40 px-4 py-2.5">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto scrollbar-none">
-            <div class="flex items-center gap-3 shrink-0">
-                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-md">C</div>
-                <span class="font-bold tracking-wider bg-gradient-to-r from-purple-600 to-indigo-400 bg-clip-text text-transparent text-lg">ControlCash</span>
-            </div>
-            <nav class="flex items-center gap-1.5 shrink-0 text-xs font-medium">
-                <button onclick="switchTab('dashboard')" class="nav-sup px-3 py-1.5 rounded-lg text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 transition">Planeje sua grana</button>
-                <button onclick="switchTab('lancamentos')" class="nav-sup px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-white transition">Lançamentos</button>
-                <button onclick="switchTab('cartao')" class="nav-sup px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-white transition">Cartão de crédito</button>
-                <button onclick="switchTab('dividas')" class="nav-sup px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-white transition">Quitação</button>
-                <button onclick="switchTab('investimentos')" class="nav-sup px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-white transition">Investimentos</button>
-            </nav>
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
             <div class="flex items-center gap-2 shrink-0">
-                <button onclick="toggleMenuOpcoes()" class="bg-slate-100 dark:bg-purple-950/40 hover:bg-slate-200 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium transition border border-slate-200 dark:border-purple-800/40">⚙️ Opções & IA</button>
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-md">C</div>
+                <span class="font-bold tracking-wider bg-gradient-to-r from-purple-600 to-indigo-400 bg-clip-text text-transparent text-base">ControlCash</span>
+            </div>
+            <nav class="flex items-center gap-1 shrink-0 text-xs font-medium">
+                <button onclick="switchTab('dashboard')" class="nav-sup px-2.5 py-1.5 rounded-lg text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50">Dashboard</button>
+                <button onclick="switchTab('lancamentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Lançamentos</button>
+                <button onclick="switchTab('categorias')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Categorias</button>
+                <button onclick="switchTab('contas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Contas</button>
+                <button onclick="switchTab('cartao')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Cartões</button>
+                <button onclick="switchTab('dividas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Dívidas</button>
+                <button onclick="switchTab('metas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Metas</button>
+                <button onclick="switchTab('limites')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Limites</button>
+                <button onclick="switchTab('investimentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Investimentos</button>
+            </nav>
+            <div class="shrink-0 relative">
+                <button onclick="toggleMenuOpcoes()" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center">
+                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
+                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
+                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
+                </button>
+                <div id="menu-opcoes" class="hidden absolute right-0 top-11 w-56 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
+                    <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">📁 Importar Extrato CSV</button>
+                    <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-500 hover:bg-purple-50 dark:hover:bg-purple-950/50">🤖 Conectar WhatsApp / IA</button>
+                    <hr class="border-slate-100 dark:border-purple-950 my-1">
+                    <button onclick="alternarTema()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">🎨 Alternar Tema</button>
+                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50">🚪 Sair</button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- MENU DROPDOWN DE OPÇÕES -->
-    <div id="menu-opcoes" class="hidden fixed right-4 top-16 w-56 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
-        <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-purple-950/50">📁 Importar Extrato CSV</button>
-        <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:bg-purple-50 dark:hover:bg-purple-950/50">🤖 Conectar WhatsApp / IA</button>
-        <hr class="border-slate-100 dark:border-purple-950 my-1">
-        <button onclick="alternarTema()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-purple-950/50">🎨 Alternar Tema</button>
-        <button onclick="fazerLogout()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">🚪 Sair da Conta</button>
-    </div>
-
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-1 space-y-6">
         
-        <!-- DASHBOARD (Estilo GranaZen Expandido) -->
+        <!-- DASHBOARD -->
         <div id="tab-dashboard" class="space-y-6">
-            
-            <!-- Barra de Período -->
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-4 rounded-2xl flex flex-wrap justify-between items-center gap-4 shadow-sm">
-                <div class="flex items-center gap-2 text-sm font-medium">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-4 rounded-2xl flex justify-between items-center shadow-sm">
+                <div class="flex gap-2 text-sm font-medium">
                     <button class="px-3 py-1.5 rounded-lg bg-purple-600 text-white shadow-sm">Esse mês</button>
-                    <button class="px-3 py-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-purple-950/30">Hoje</button>
-                    <button class="px-3 py-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-purple-950/30">Esse ano</button>
+                    <button class="px-3 py-1.5 rounded-lg text-slate-400">Hoje</button>
+                    <button class="px-3 py-1.5 rounded-lg text-slate-400">Esse ano</button>
                 </div>
-                <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                    Ciclo Ativo: <span class="text-purple-600 dark:text-purple-400 font-bold">Novembro de 2026</span>
-                </div>
+                <div class="text-xs text-slate-400 font-medium">Ciclo Ativo: <span class="text-purple-400 font-bold">Novembro de 2026</span></div>
             </div>
 
-            <!-- Gráfico de Tendência de Despesas Mensais -->
+            <!-- EVOLUÇÃO DE DESPESAS -->
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
                 <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Evolução de Despesas por Mês</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl border border-slate-100 dark:border-purple-950">
-                        <span class="text-[10px] text-slate-400">Agosto</span>
-                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 mt-1">R$ 6.714,90</p>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl border border-slate-100 dark:border-purple-950">
-                        <span class="text-[10px] text-slate-400">Setembro</span>
-                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 mt-1">R$ 3.275,45</p>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl border border-slate-100 dark:border-purple-950">
-                        <span class="text-[10px] text-slate-400">Outubro</span>
-                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 mt-1">R$ 1.393,91</p>
-                    </div>
-                    <div class="bg-purple-50 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-500/30">
-                        <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Novembro (Atual)</span>
-                        <p class="text-sm font-bold text-purple-600 dark:text-purple-300 mt-1" id="sum-mes-atual">R$ 2.507,43</p>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl border border-slate-100 dark:border-purple-950">
-                        <span class="text-[10px] text-slate-400">Dezembro</span>
-                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 mt-1">R$ 774,84</p>
-                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Agosto</span><p class="text-sm font-bold mt-1">R$ 6.714,90</p></div>
+                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Setembro</span><p class="text-sm font-bold mt-1">R$ 3.275,45</p></div>
+                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Outubro</span><p class="text-sm font-bold mt-1">R$ 1.393,91</p></div>
+                    <div class="bg-purple-50 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-500/30"><span class="text-[10px] font-semibold text-purple-400">Novembro (Atual)</span><p class="text-sm font-bold text-purple-300 mt-1" id="dash-tot-mes">R$ 0,00</p></div>
+                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Dezembro</span><p class="text-sm font-bold mt-1">R$ 774,84</p></div>
                 </div>
             </div>
 
-            <!-- Cards Detalhados de Receitas e Despesas -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <div class="flex justify-between items-center"><h4 class="text-sm font-bold text-emerald-600 dark:text-emerald-400">Receitas</h4><span class="text-xs text-slate-400">Este Período</span></div>
+                    <div class="flex justify-between"><h4 class="text-sm font-bold text-emerald-400">Receitas</h4></div>
                     <h3 id="dash-receitas" class="text-2xl font-bold">R$ 0,00</h3>
-                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-purple-950 text-xs">
-                        <div><span class="text-slate-400">Recebido:</span> <strong class="text-emerald-500" id="rec-recebido">R$ 0,00</strong></div>
-                        <div><span class="text-slate-400">A receber:</span> <strong class="text-slate-300">R$ 0,00</strong></div>
-                    </div>
                 </div>
-
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <div class="flex justify-between items-center"><h4 class="text-sm font-bold text-rose-600 dark:text-rose-400">Despesas</h4><span class="text-xs text-slate-400">Este Período</span></div>
+                    <div class="flex justify-between"><h4 class="text-sm font-bold text-rose-400">Despesas</h4></div>
                     <h3 id="dash-despesas" class="text-2xl font-bold">R$ 0,00</h3>
-                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-purple-950 text-xs">
-                        <div><span class="text-slate-400">Pago:</span> <strong class="text-rose-500" id="desp-pago">R$ 0,00</strong></div>
-                        <div><span class="text-slate-400">A pagar:</span> <strong class="text-slate-300">R$ 0,00</strong></div>
-                    </div>
                 </div>
             </div>
-
-            <!-- Saldos Disponível e Previsto -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-5 rounded-2xl shadow-sm">
-                    <span class="text-xs text-slate-400 uppercase font-medium">Saldo Disponível</span>
-                    <h3 id="dash-saldo" class="text-xl font-bold text-purple-600 dark:text-purple-400 mt-1">R$ 0,00</h3>
-                </div>
-                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-5 rounded-2xl shadow-sm">
-                    <span class="text-xs text-slate-400 uppercase font-medium">Saldo Previsto</span>
-                    <h3 class="text-xl font-bold text-slate-400 mt-1">R$ 0,00</h3>
-                </div>
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-5 rounded-2xl">
+                <span class="text-xs text-slate-400 uppercase font-medium">Saldo Disponível em Contas</span>
+                <h3 id="dash-saldo-total" class="text-xl font-bold text-purple-400 mt-1">R$ 0,00</h3>
             </div>
         </div>
 
         <!-- LANÇAMENTOS -->
         <div id="tab-lancamentos" class="hidden space-y-6">
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                <h3 class="text-base font-semibold mb-4">Novo Lançamento Manual</h3>
-                <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <input type="date" id="lanc-data" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <select id="lanc-tipo" class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                        <option value="Despesa">Despesa</option>
-                        <option value="Receita">Receita</option>
-                    </select>
-                    <input type="text" id="lanc-desc" placeholder="Descrição (ex: Supermercado)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <select id="lanc-cat" class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                        <option value="Alimentação">Alimentação</option>
-                        <option value="Moradia">Moradia</option>
-                        <option value="Transporte">Transporte</option>
-                        <option value="Lazer">Lazer</option>
-                        <option value="Investimentos">Investimentos</option>
-                    </select>
-                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 text-white font-medium p-3 rounded-xl text-sm transition">Adicionar na Base</button>
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold mb-4">Novo Lançamento</h3>
+                <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <input type="date" id="lanc-data" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <select id="lanc-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Despesa">Despesa</option><option value="Receita">Receita</option></select>
+                    <input type="text" id="lanc-desc" placeholder="Descrição" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <select id="lanc-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Alimentação">Alimentação</option><option value="Moradia">Moradia</option></select>
+                    <select id="lanc-conta" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Conta Principal">Conta Principal</option></select>
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-2">Salvar Lançamento</button>
                 </form>
             </div>
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl overflow-x-auto shadow-sm">
-                <h3 class="text-base font-semibold mb-4">Histórico de Movimentações</h3>
-                <table class="w-full text-left border-collapse text-sm">
-                    <thead><tr class="border-b border-slate-100 dark:border-purple-950 text-slate-400 text-xs uppercase"><th class="p-3">Data</th><th class="p-3">Tipo</th><th class="p-3">Descrição</th><th class="p-3">Categoria</th><th class="p-3">Valor</th></tr></thead>
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Data</th><th class="p-3">Tipo</th><th class="p-3">Descrição</th><th class="p-3">Categoria</th><th class="p-3">Conta</th><th class="p-3">Valor</th></tr></thead>
                     <tbody id="tabela-lancamentos"></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- CARTÃO DE CRÉDITO -->
-        <div id="tab-cartao" class="hidden space-y-6">
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                <h3 class="text-base font-semibold mb-2">Cartão de Crédito</h3>
-                <p class="text-xs text-slate-400 mb-6">Acompanhe seus limites e faturas comprometidas.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200 dark:border-purple-900/40">
-                        <span class="text-xs text-slate-400">Fatura Atual</span>
-                        <h4 id="cartao-fatura-atual" class="text-2xl font-bold text-amber-500 mt-1">R$ 0,00</h4>
-                    </div>
-                    <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200 dark:border-purple-900/40">
-                        <span class="text-xs text-slate-400">Limite Disponível</span>
-                        <h4 id="cartao-limite-disp" class="text-2xl font-bold text-emerald-500 mt-1">R$ 5.000,00</h4>
-                    </div>
+        <!-- CATEGORIAS -->
+        <div id="tab-categorias" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-semibold">Gerenciar Categorias</h3>
                 </div>
+                <form onsubmit="adicionarCategoria(event)" class="flex gap-4 mb-6">
+                    <input type="text" id="cat-nome" placeholder="Nova Categoria (ex: Lazer, Saúde)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
+                    <button type="submit" class="bg-purple-600 text-white px-6 rounded-xl text-sm font-medium">Adicionar</button>
+                </form>
+                <div id="lista-categorias" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
             </div>
         </div>
 
-        <!-- QUITAÇÃO DE DÍVIDAS -->
-        <div id="tab-dividas" class="hidden space-y-6">
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                <h3 class="text-base font-semibold mb-2">Quitação Inteligente de Dívidas</h3>
-                <p class="text-xs text-slate-400 mb-4">Ordenação automática por juros mais altos.</p>
-                <form id="form-divida" onsubmit="adicionarDivida(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <input type="text" id="div-nome" placeholder="Nome da Dívida" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" step="0.01" id="div-valor" placeholder="Saldo Devedor (R$)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" step="0.1" id="div-juros" placeholder="Juros (% a.m.)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-rose-600 hover:bg-rose-500 text-white font-medium p-3 rounded-xl text-sm transition sm:col-span-3">Cadastrar Dívida</button>
+        <!-- CONTAS BANCÁRIAS (Até 5 contas) -->
+        <div id="tab-contas" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-semibold">Contas Bancárias (Máx 5)[cite: 17]</h3>
+                    <span id="contas-contador" class="text-xs text-purple-400 font-bold">0 / 5</span>
+                </div>
+                <form id="form-conta" onsubmit="adicionarConta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <input type="text" id="conta-nome" placeholder="Nome da Conta (ex: Nubank)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="conta-saldo" placeholder="Saldo Inicial (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 rounded-xl text-sm">Adicionar Conta</button>
                 </form>
-                <table class="w-full text-left border-collapse text-sm">
-                    <thead><tr class="border-b border-slate-100 dark:border-purple-950 text-slate-400 text-xs uppercase"><th class="p-3">Prioridade</th><th class="p-3">Dívida</th><th class="p-3">Saldo Devedor</th><th class="p-3">Juros</th></tr></thead>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-contas"></div>
+            </div>
+        </div>
+
+        <!-- CARTÃO DE CRÉDITO (Até 8 cartões) -->
+        <div id="tab-cartao" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-semibold">Cartões de Crédito (Máx 8)[cite: 16]</h3>
+                    <span id="cartao-contador" class="text-xs text-purple-400 font-bold">0 / 8</span>
+                </div>
+                <form onsubmit="adicionarCartao(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <input type="text" id="cc-nome" placeholder="Nome do Cartão (ex: Mastercard)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="cc-limite" placeholder="Limite Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-feixa" placeholder="Dia Fechamento (ex: 17)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-venc" placeholder="Dia Vencimento (ex: 26)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 rounded-xl text-sm sm:col-span-4">Cadastrar Cartão</button>
+                </form>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="grid-cartoes"></div>
+            </div>
+        </div>
+
+        <!-- DÍVIDAS / EMPRÉSTIMOS COM PARCELAS E VENCIMENTO -->
+        <div id="tab-dividas" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos (Parcelas & Vencimento)</h3>
+                <form onsubmit="adicionarDivida(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+                    <input type="text" id="div-nome" placeholder="Dívida / Empréstimo" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="div-valor" placeholder="Valor Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="div-parcelas" placeholder="Total de Parcelas" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="date" id="div-venc" placeholder="Primeiro Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.1" id="div-juros" placeholder="Juros % a.m." required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar com Cronograma de Parcelas</button>
+                </form>
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Prioridade</th><th class="p-3">Dívida</th><th class="p-3">Valor Total</th><th class="p-3">Parcelas</th><th class="p-3">Vencimento</th><th class="p-3">Juros</th></tr></thead>
                     <tbody id="tabela-dividas"></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- INVESTIMENTOS -->
-        <div id="tab-investimentos" class="hidden space-y-6">
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                <h3 class="text-base font-semibold mb-2">Meus Investimentos & Aportes</h3>
-                <p class="text-xs text-slate-400 mb-4">Registre aportes no Tesouro Direto, MXRF11, GARE11 ou KNSC11.</p>
-                <form id="form-investimento" onsubmit="adicionarInvestimento(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <input type="text" id="inv-nome" placeholder="Ativo (ex: Tesouro Selic, MXRF11)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" step="0.01" id="inv-valor" placeholder="Valor (R$)" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="date" id="inv-data" required class="bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 text-white font-medium p-3 rounded-xl text-sm transition sm:col-span-3">Registrar Aporte</button>
+        <!-- METAS -->
+        <div id="tab-metas" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold mb-4">Minhas Metas Financeiras</h3>
+                <form onsubmit="adicionarMeta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <input type="text" id="meta-nome" placeholder="Nome da Meta (ex: Quitar Empréstimo)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="meta-valor" placeholder="Valor Alvo (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm">Criar Meta</button>
                 </form>
-                <table class="w-full text-left border-collapse text-sm">
-                    <thead><tr class="border-b border-slate-100 dark:border-purple-950 text-slate-400 text-xs uppercase"><th class="p-3">Data</th><th class="p-3">Ativo</th><th class="p-3">Valor</th></tr></thead>
+                <div id="lista-metas" class="space-y-4"></div>
+            </div>
+        </div>
+
+        <!-- LIMITES DE GASTOS -->
+        <div id="tab-limites" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold mb-2">Limites de Gastos por Categoria</h3>
+                <p class="text-xs text-slate-400 mb-4">Planeje o teto máximo que pode gastar em cada categoria por mês.</p>
+                <form onsubmit="definirLimite(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <select id="limite-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Alimentação">Alimentação</option><option value="Moradia">Moradia</option></select>
+                    <input type="number" step="0.01" id="limite-valor" placeholder="Teto de Gasto (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm sm:col-span-2">Definir Limite</button>
+                </form>
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Categoria</th><th class="p-3">Teto Planejado</th><th class="p-3">Realizado no Mês</th><th class="p-3">Status</th></tr></thead>
+                    <tbody id="tabela-limites"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- INVESTIMENTOS ESTILO INVESTIDOR10 -->
+        <div id="tab-investimentos" class="hidden space-y-6">
+            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold mb-2">Investimentos (Estilo Investidor10)[cite: 12, 13]</h3>
+                <form onsubmit="adicionarInvestimento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+                    <select id="inv-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                        <option value="Ações">Ações</option>
+                        <option value="FIIs">FIIs</option>
+                        <option value="Stocks">Stocks</option>
+                        <option value="Tesouro Direto">Tesouro Direto</option>
+                        <option value="Criptomoedas">Criptomoedas</option>
+                    </select>
+                    <input type="text" id="inv-ativo" placeholder="Ativo (ex: MXRF11, Selic)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="date" id="inv-data" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.001" id="inv-qtd" placeholder="Quantidade" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" step="0.01" id="inv-preco" placeholder="Preço (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Adicionar Aporte no Ativo</button>
+                </form>
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Data</th><th class="p-3">Tipo</th><th class="p-3">Ativo</th><th class="p-3">Qtd</th><th class="p-3">Preço Médio</th><th class="p-3">Total Investido</th></tr></thead>
                     <tbody id="tabela-investimentos"></tbody>
                 </table>
             </div>
@@ -243,94 +264,93 @@
 
     </main>
 
-    <!-- Modal CSV -->
+    <!-- Modais -->
     <div id="modal-csv" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4 shadow-2xl">
+        <div class="bg-white dark:bg-[#120822] border border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4">
             <h3 class="text-lg font-bold">📁 Importar Extrato CSV</h3>
-            <input type="file" id="csv-file-input" accept=".csv" class="block w-full text-sm text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white cursor-pointer border border-slate-200 dark:border-purple-900/40 rounded-xl bg-slate-50 dark:bg-slate-950/60 p-2">
-            <button onclick="fecharModais()" class="w-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
+            <input type="file" id="csv-file-input" accept=".csv" class="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-purple-600 file:text-white">
+            <button onclick="fecharModais()" class="w-full bg-slate-800 text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
         </div>
     </div>
-
-    <!-- Modal WhatsApp -->
     <div id="modal-whatsapp" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4 shadow-2xl">
-            <h3 class="text-lg font-bold text-emerald-400">🤖 Integração WhatsApp & IA</h3>
-            <p class="text-xs text-slate-400">Webhook pronto para receber dados automáticos do Make.com.</p>
-            <button onclick="fecharModais()" class="w-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
+        <div class="bg-white dark:bg-[#120822] border border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4">
+            <h3 class="text-lg font-bold text-emerald-400">🤖 WhatsApp & IA</h3>
+            <p class="text-xs text-slate-400">Webhook configurado para receber seus gastos via bot.</p>
+            <button onclick="fecharModais()" class="w-full bg-slate-800 text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
         </div>
     </div>
 
     <script>
-        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v4')) || { lancamentos: [], dividas: [], investimentos: [] };
+        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v5')) || { 
+            lancamentos: [], dividas: [], investimentos: [], 
+            contas: [{nome: 'Conta Principal', saldo: 1000}], 
+            cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer'], metas: [], limites: {} 
+        };
         let usuarioLogado = localStorage.getItem('control_cash_user');
-
         if (usuarioLogado) document.getElementById('tela-login').classList.add('hidden');
 
-        function fazerLogin(e) {
-            e.preventDefault();
-            localStorage.setItem('control_cash_user', document.getElementById('login-email').value);
-            document.getElementById('tela-login').classList.add('hidden');
-        }
-
-        function loginComGoogle() {
-            localStorage.setItem('control_cash_user', 'google_user@gmail.com');
-            document.getElementById('tela-login').classList.add('hidden');
-        }
-
-        function fazerLogout() {
-            localStorage.removeItem('control_cash_user');
-            document.getElementById('tela-login').classList.remove('hidden');
-        }
+        function fazerLogin(e) { e.preventDefault(); localStorage.setItem('control_cash_user', document.getElementById('login-email').value); document.getElementById('tela-login').classList.add('hidden'); }
+        function loginComGoogle() { localStorage.setItem('control_cash_user', 'google@gmail.com'); document.getElementById('tela-login').classList.add('hidden'); }
+        function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.remove('hidden'); }
 
         function switchTab(tabId) {
             document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
-            
-            document.querySelectorAll('.nav-sup').forEach(btn => {
-                btn.classList.remove('text-purple-600', 'dark:text-purple-300', 'bg-purple-50', 'dark:bg-purple-950/50');
-                btn.classList.add('text-slate-600', 'dark:text-slate-400');
+            document.querySelectorAll('.nav-sup').forEach(btn => btn.classList.remove('text-purple-400', 'bg-purple-950/50'));
+            event.currentTarget.classList.add('text-purple-400', 'bg-purple-950/50');
+            document.getElementById('menu-opcoes').classList.add('hidden');
+            atualizarTudo();
+        }
+
+        function toggleMenuOpcoes() { document.getElementById('menu-opcoes').classList.toggle('hidden'); }
+        function abrirModalCsv() { document.getElementById('menu-opcoes').classList.add('hidden'); document.getElementById('modal-csv').classList.remove('hidden'); }
+        function abrirModalWhatsapp() { document.getElementById('menu-opcoes').classList.add('hidden'); document.getElementById('modal-whatsapp').classList.remove('hidden'); }
+        function fecharModais() { document.getElementById('modal-csv').classList.add('hidden'); document.getElementById('modal-whatsapp').classList.add('hidden'); }
+        function alternarTema() { document.getElementById('menu-opcoes').classList.add('hidden'); document.documentElement.classList.toggle('dark'); }
+
+        function adicionarConta(e) {
+            e.preventDefault();
+            if (dados.contas.length >= 5) { alert('Limite máximo de 5 contas atingido!'); return; }
+            dados.contas.push({ nome: document.getElementById('conta-nome').value, saldo: parseFloat(document.getElementById('conta-saldo').value) });
+            salvarEAtualizar(); document.getElementById('form-conta').reset();
+        }
+
+        function adicionarCartao(e) {
+            e.preventDefault();
+            if (dados.cartoes.length >= 8) { alert('Limite máximo de 8 cartões atingido![cite: 16]'); return; }
+            dados.cartoes.push({
+                nome: document.getElementById('cc-nome').value,
+                limite: parseFloat(document.getElementById('cc-limite').value),
+                fechamento: document.getElementById('cc-feixa').value,
+                vencimento: document.getElementById('cc-venc').value,
+                usado: 0
             });
-            event.currentTarget.classList.add('text-purple-600', 'dark:text-purple-300', 'bg-purple-50', 'dark:bg-purple-950/50');
-            document.getElementById('menu-opcoes').classList.add('hidden');
-            atualizarDashboard();
+            salvarEAtualizar(); e.target.reset();
         }
 
-        function toggleMenuOpcoes() {
-            document.getElementById('menu-opcoes').classList.toggle('hidden');
-        }
-
-        function abrirModalCsv() {
-            document.getElementById('menu-opcoes').classList.add('hidden');
-            document.getElementById('modal-csv').classList.remove('hidden');
-        }
-
-        function abrirModalWhatsapp() {
-            document.getElementById('menu-opcoes').classList.add('hidden');
-            document.getElementById('modal-whatsapp').classList.remove('hidden');
-        }
-
-        function fecharModais() {
-            document.getElementById('modal-csv').classList.add('hidden');
-            document.getElementById('modal-whatsapp').classList.add('hidden');
-        }
-
-        function alternarTema() {
-            document.getElementById('menu-opcoes').classList.add('hidden');
-            document.documentElement.classList.toggle('dark');
+        function adicionarCategoria(e) {
+            e.preventDefault();
+            const cat = document.getElementById('cat-nome').value;
+            if(!dados.categorias.includes(cat)) dados.categorias.push(cat);
+            salvarEAtualizar(); document.getElementById('cat-nome').value = '';
         }
 
         function adicionarLancamento(e) {
             e.preventDefault();
+            const tipo = document.getElementById('lanc-tipo').value;
+            const valor = parseFloat(document.getElementById('lanc-valor').value);
+            const contaNome = document.getElementById('lanc-conta').value;
+            
             dados.lancamentos.push({
                 data: document.getElementById('lanc-data').value,
-                tipo: document.getElementById('lanc-tipo').value,
-                desc: document.getElementById('lanc-desc').value,
-                valor: parseFloat(document.getElementById('lanc-valor').value),
-                cat: document.getElementById('lanc-cat').value
+                tipo, desc: document.getElementById('lanc-desc').value,
+                valor, cat: document.getElementById('lanc-cat').value, conta: contaNome
             });
-            salvarEAtualizar();
-            document.getElementById('form-lancamento').reset();
+
+            let conta = dados.contas.find(c => c.nome === contaNome);
+            if(conta) { if(tipo === 'Receita') conta.saldo += valor; else conta.saldo -= valor; }
+
+            salvarEAtualizar(); document.getElementById('form-lancamento').reset();
         }
 
         function adicionarDivida(e) {
@@ -338,120 +358,108 @@
             dados.dividas.push({
                 nome: document.getElementById('div-nome').value,
                 valor: parseFloat(document.getElementById('div-valor').value),
+                parcelas: parseInt(document.getElementById('div-parcelas').value),
+                vencimento: document.getElementById('div-venc').value,
                 juros: parseFloat(document.getElementById('div-juros').value)
             });
-            salvarEAtualizar();
-            document.getElementById('form-divida').reset();
+            salvarEAtualizar(); e.target.reset();
+        }
+
+        function adicionarMeta(e) {
+            e.preventDefault();
+            dados.metas.push({ nome: document.getElementById('meta-nome').value, valor: parseFloat(document.getElementById('meta-valor').value), alocado: 0 });
+            salvarEAtualizar(); e.target.reset();
+        }
+
+        function definirLimite(e) {
+            e.preventDefault();
+            dados.limites[document.getElementById('limite-cat').value] = parseFloat(document.getElementById('limite-valor').value);
+            salvarEAtualizar(); alert('Limite salvo!');
         }
 
         function adicionarInvestimento(e) {
             e.preventDefault();
             dados.investimentos.push({
-                nome: document.getElementById('inv-nome').value,
-                valor: parseFloat(document.getElementById('inv-valor').value),
-                data: document.getElementById('inv-data').value
+                tipo: document.getElementById('inv-tipo').value,
+                ativo: document.getElementById('inv-ativo').value,
+                data: document.getElementById('inv-data').value,
+                qtd: parseFloat(document.getElementById('inv-qtd').value),
+                preco: parseFloat(document.getElementById('inv-preco').value)
             });
-            salvarEAtualizar();
-            document.getElementById('form-investimento').reset();
+            salvarEAtualizar(); e.target.reset();
         }
-
-        document.getElementById('csv-file-input').addEventListener('change', function(e) {
-            const arquivo = e.target.files[0];
-            if (!arquivo) return;
-            const leitor = new FileReader();
-            leitor.onload = function(evt) {
-                const linhas = evt.target.result.split('\n');
-                let importados = 0;
-                linhas.forEach((linha, indice) => {
-                    if (indice === 0 || !linha.trim()) return;
-                    const colunas = linha.split(',');
-                    if (colunas.length >= 3) {
-                        const data = colunas[0].trim().replace(/['"]/g, '') || new Date().toISOString().split('T')[0];
-                        const desc = colunas[1].trim().replace(/['"]/g, '') || 'Importado CSV';
-                        const valorRaw = parseFloat(colunas[2].trim().replace(/['"]/g, '').replace(',', '.')) || 0;
-                        dados.lancamentos.push({
-                            data: data,
-                            tipo: valorRaw < 0 ? 'Despesa' : 'Receita',
-                            desc: desc,
-                            valor: Math.abs(valorRaw),
-                            cat: 'Outros'
-                        });
-                        importados++;
-                    }
-                });
-                salvarEAtualizar();
-                fecharModais();
-                alert(`${importados} lançamentos importados com sucesso!`);
-                e.target.value = '';
-            };
-            leitor.readAsText(arquivo);
-        });
 
         function salvarEAtualizar() {
-            localStorage.setItem('control_cash_diou_v4', JSON.stringify(dados));
-            renderizarTabelas();
-            atualizarDashboard();
+            localStorage.setItem('control_cash_diou_v5', JSON.stringify(dados));
+            atualizarTudo();
         }
 
-        function renderizarTabelas() {
-            const tbodyLanc = document.getElementById('tabela-lancamentos');
-            tbodyLanc.innerHTML = '';
-            dados.lancamentos.forEach(item => {
-                tbodyLanc.innerHTML += `
-                    <tr class="border-b border-slate-100 dark:border-purple-950/50 hover:bg-purple-50/50 dark:hover:bg-purple-950/20">
-                        <td class="p-3 text-slate-600 dark:text-slate-300">${item.data}</td>
-                        <td class="p-3"><span class="px-2.5 py-0.5 rounded-md text-xs font-medium ${item.tipo === 'Receita' ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/10 text-rose-600 dark:text-rose-400'}">${item.tipo}</span></td>
-                        <td class="p-3 text-slate-800 dark:text-slate-200">${item.desc}</td>
-                        <td class="p-3 text-slate-500 dark:text-slate-400">${item.cat}</td>
-                        <td class="p-3 font-semibold ${item.tipo === 'Receita' ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-800 dark:text-slate-100'}">R$ ${item.valor.toFixed(2)}</td>
-                    </tr>
-                `;
+        function atualizarTudo() {
+            // Contas
+            document.getElementById('contas-contador').innerText = `${dados.contas.length} / 5`;
+            let gridContas = document.getElementById('grid-contas'); gridContas.innerHTML = '';
+            let totalContas = 0;
+            dados.contas.forEach((c, idx) => {
+                totalContas += c.saldo;
+                gridContas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40"><h4 class="font-bold">${c.nome}</h4><p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p></div>`;
             });
 
-            const tbodyDiv = document.getElementById('tabela-dividas');
-            tbodyDiv.innerHTML = '';
-            [...dados.dividas].sort((a, b) => b.juros - a.juros).forEach((div, index) => {
-                tbodyDiv.innerHTML += `
-                    <tr class="border-b border-slate-100 dark:border-purple-950/50">
-                        <td class="p-3"><span class="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-500">🔥 Pagar ${index + 1}º</span></td>
-                        <td class="p-3 font-medium">${div.nome}</td>
-                        <td class="p-3">R$ ${div.valor.toFixed(2)}</td>
-                        <td class="p-3 text-rose-500 font-semibold">${div.juros}% a.m.</td>
-                    </tr>
-                `;
+            // Cartões
+            document.getElementById('cartao-contador').innerText = `${dados.cartoes.length} / 8`;
+            let gridCartoes = document.getElementById('grid-cartoes'); gridCartoes.innerHTML = '';
+            dados.cartoes.forEach(cc => {
+                gridCartoes.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40 space-y-2"><div class="flex justify-between"><h4 class="font-bold">${cc.nome}</h4><span class="text-xs text-slate-400">Venc. Dia ${cc.vencimento}</span></div><p class="text-xs text-slate-400">Limite Total: R$ ${cc.limite.toFixed(2)}</p></div>`;
             });
 
-            const tbodyInv = document.getElementById('tabela-investimentos');
-            tbodyInv.innerHTML = '';
-            dados.investimentos.forEach(inv => {
-                tbodyInv.innerHTML += `
-                    <tr class="border-b border-slate-100 dark:border-purple-950/50">
-                        <td class="p-3 text-slate-600 dark:text-slate-300">${inv.data}</td>
-                        <td class="p-3 text-purple-600 dark:text-purple-400 font-medium">${inv.nome}</td>
-                        <td class="p-3 font-semibold">R$ ${inv.valor.valor || inv.valor.toFixed(2)}</td>
-                    </tr>
-                `;
+            // Selects e Tabelas
+            let selCat = document.getElementById('lanc-cat'); selCat.innerHTML = '';
+            let selLim = document.getElementById('limite-cat'); selLim.innerHTML = '';
+            dados.categorias.forEach(cat => {
+                selCat.innerHTML += `<option value="${cat}">${cat}</option>`;
+                selLim.innerHTML += `<option value="${cat}">${cat}</option>`;
             });
-        }
 
-        function atualizarDashboard() {
+            let selConta = document.getElementById('lanc-conta'); selConta.innerHTML = '';
+            dados.contas.forEach(c => selConta.innerHTML += `<option value="${c.nome}">${c.nome}</option>');`);
+
+            let listaCat = document.getElementById('lista-categorias'); listaCat.innerHTML = '';
+            dados.categorias.forEach(cat => listaCat.innerHTML += `<div class="bg-slate-950 p-3 rounded-xl border border-purple-900/30 flex justify-between"><span>${cat}</span></div>`);
+
+            // Lançamentos & Dashboard
             let totalRec = 0, totalDesp = 0;
+            let tbodyLanc = document.getElementById('tabela-lancamentos'); tbodyLanc.innerHTML = '';
             dados.lancamentos.forEach(item => {
-                if(item.tipo === 'Receita') totalRec += item.valor;
-                if(item.tipo === 'Despesa') totalDesp += item.valor;
+                if(item.tipo === 'Receita') totalRec += item.valor; else totalDesp += item.valor;
+                tbodyLanc.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3">${item.data}</td><td class="p-3">${item.tipo}</td><td class="p-3">${item.desc}</td><td class="p-3">${item.cat}</td><td class="p-3">${item.conta}</td><td class="p-3 font-semibold">R$ ${item.valor.toFixed(2)}</td></tr>`;
             });
+
             document.getElementById('dash-receitas').innerText = `R$ ${totalRec.toFixed(2)}`;
             document.getElementById('dash-despesas').innerText = `R$ ${totalDesp.toFixed(2)}`;
-            document.getElementById('rec-recebido').innerText = `R$ ${totalRec.toFixed(2)}`;
-            document.getElementById('desp-pago').innerText = `R$ ${totalDesp.toFixed(2)}`;
-            document.getElementById('dash-saldo').innerText = `R$ ${(totalRec - totalDesp).toFixed(2)}`;
-            document.getElementById('sum-mes-atual').innerText = `R$ ${totalDesp.toFixed(2)}`;
+            document.getElementById('dash-tot-mes').innerText = `R$ ${totalDesp.toFixed(2)}`;
+            document.getElementById('dash-saldo-total').innerText = `R$ ${totalContas.toFixed(2)}`;
+
+            // Dívidas
+            let tbodyDiv = document.getElementById('tabela-dividas'); tbodyDiv.innerHTML = '';
+            [...dados.dividas].sort((a,b)=>b.juros-a.juros).forEach((d, i) => {
+                tbodyDiv.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3"><span class="px-2 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-500">Prioridade ${i+1}</span></td><td class="p-3">${d.nome}</td><td class="p-3">R$ ${d.valor.toFixed(2)}</td><td class="p-3">${d.parcelas}x</td><td class="p-3">${d.vencimento}</td><td class="p-3 text-rose-400">${d.juros}%</td></tr>`;
+            });
+
+            // Metas
+            let listaMetas = document.getElementById('lista-metas'); listaMetas.innerHTML = '';
+            dados.metas.forEach(m => {
+                let perc = Math.min(100, (m.alocado / m.valor) * 100).toFixed(0);
+                listaMetas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40 space-y-2"><div class="flex justify-between font-semibold"><span>${m.nome}</span><span>R$ ${m.alocado.toFixed(2)} / R$ ${m.valor.toFixed(2)}</span></div><div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden"><div class="bg-purple-600 h-full" style="width: ${perc}%"></div></div></div>`;
+            });
+
+            // Investimentos
+            let tbodyInv = document.getElementById('tabela-investimentos'); tbodyInv.innerHTML = '';
+            dados.investimentos.forEach(inv => {
+                let totalInv = inv.qtd * inv.preco;
+                tbodyInv.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3">${inv.data}</td><td class="p-3">${inv.tipo}</td><td class="p-3 text-purple-400 font-bold">${inv.ativo}</td><td class="p-3">${inv.qtd}</td><td class="p-3">R$ ${inv.preco.toFixed(2)}</td><td class="p-3 font-semibold">R$ ${totalInv.toFixed(2)}</td></tr>`;
+            });
         }
 
-        window.onload = () => {
-            renderizarTabelas();
-            atualizarDashboard();
-        };
+        window.onload = atualizarTudo;
     </script>
 </body>
 </html>
