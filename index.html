@@ -1,146 +1,154 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planner Financeiro - Diou</title>
+    <title>GranaZen - Controle Financeiro Inteligente</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        panel: '#0f172a',
+                        card: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen pb-12">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen pb-12">
     
-    <!-- Header -->
-    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <h1 class="text-xl font-bold text-emerald-400">💰 Planner Financeiro & Quitação</h1>
-            <nav class="flex flex-wrap gap-2 justify-center">
-                <button onclick="switchTab('dashboard')" class="tab-btn px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-medium text-sm transition">Dashboard</button>
-                <button onclick="switchTab('lancamentos')" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-700 text-slate-300 font-medium text-sm transition">Lançamentos</button>
-                <button onclick="switchTab('cartao')" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-700 text-slate-300 font-medium text-sm transition">Cartão</button>
-                <button onclick="switchTab('dividas')" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-700 text-slate-300 font-medium text-sm transition">Dívidas</button>
-                <button onclick="switchTab('investimentos')" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-700 text-slate-300 font-medium text-sm transition">Investimentos</button>
+    <!-- Header / Navbar Superior -->
+    <header class="bg-[#17803c] border-b border-emerald-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl font-black tracking-wider text-white">GranaZen</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-1">
+                <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-lg text-xs font-medium text-white bg-white/20 transition">Planeje sua grana</button>
+                <button onclick="switchTab('lancamentos')" class="nav-btn px-3 py-2 rounded-lg text-xs font-medium text-white/80 hover:bg-white/10 transition">Lançamentos & CSV</button>
+                <button onclick="switchTab('cartao')" class="nav-btn px-3 py-2 rounded-lg text-xs font-medium text-white/80 hover:bg-white/10 transition">Cartão de Crédito</button>
+                <button onclick="switchTab('dividas')" class="nav-btn px-3 py-2 rounded-lg text-xs font-medium text-white/80 hover:bg-white/10 transition">Quitação</button>
+                <button onclick="switchTab('investimentos')" class="nav-btn px-3 py-2 rounded-lg text-xs font-medium text-white/80 hover:bg-white/10 transition">Investimentos</button>
             </nav>
         </div>
     </header>
 
+    <!-- Conteúdo Principal -->
     <main class="max-w-7xl mx-auto px-4 mt-6">
         
         <!-- DASHBOARD -->
         <div id="tab-dashboard" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                    <p class="text-slate-400 text-sm">Receitas do Mês</p>
-                    <h3 id="dash-receitas" class="text-2xl font-bold text-emerald-400 mt-1">R$ 0,00</h3>
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                    <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Receitas do Mês</p>
+                    <h3 id="dash-receitas" class="text-2xl font-bold text-emerald-400 mt-2">R$ 0,00</h3>
                 </div>
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                    <p class="text-slate-400 text-sm">Despesas Totais</p>
-                    <h3 id="dash-despesas" class="text-2xl font-bold text-rose-400 mt-1">R$ 0,00</h3>
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                    <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Despesas Totais</p>
+                    <h3 id="dash-despesas" class="text-2xl font-bold text-rose-400 mt-2">R$ 0,00</h3>
                 </div>
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                    <p class="text-slate-400 text-sm">Saldo Livre</p>
-                    <h3 id="dash-saldo" class="text-2xl font-bold text-sky-400 mt-1">R$ 0,00</h3>
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                    <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Saldo Livre</p>
+                    <h3 id="dash-saldo" class="text-2xl font-bold text-sky-400 mt-2">R$ 0,00</h3>
                 </div>
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                    <p class="text-slate-400 text-sm">Fatura do Cartão</p>
-                    <h3 id="dash-cartao" class="text-2xl font-bold text-amber-400 mt-1">R$ 0,00</h3>
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-sm">
+                    <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Fatura do Cartão</p>
+                    <h3 id="dash-cartao" class="text-2xl font-bold text-amber-400 mt-2">R$ 0,00</h3>
                 </div>
             </div>
 
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h3 class="text-lg font-semibold mb-4">Resumo Geral de Lançamentos</h3>
-                <p class="text-slate-400 text-sm">Cadastre suas receitas e despesas na aba "Lançamentos" para alimentar automaticamente o seu painel.</p>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-white mb-2">🤖 Status da Automação WhatsApp / Make</h3>
+                <p class="text-slate-400 text-sm">O sistema está pronto para receber os lançamentos via bot. Você pode cadastrar manualmente, importar um extrato CSV ou deixar que o Make.com alimente a base automaticamente.</p>
             </div>
         </div>
 
-        <!-- LANÇAMENTOS -->
+        <!-- LANÇAMENTOS E CSV -->
         <div id="tab-lancamentos" class="hidden space-y-6">
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h3 class="text-lg font-semibold mb-4">Novo Lançamento</h3>
-                <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <input type="date" id="lanc-data" required class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
-                    <select id="lanc-tipo" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
+            
+            <!-- Bloco de Importação CSV -->
+            <div class="bg-slate-900 border border-emerald-500/30 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-emerald-400 mb-2">📁 Importar Extrato (Arquivo CSV)</h3>
+                <p class="text-slate-400 text-sm mb-4">Selecione o arquivo CSV baixado do seu banco (ex: Nubank ou Inter) para registrar os lançamentos em lote.</p>
+                <input type="file" id="csv-file-input" accept=".csv" class="block w-full text-sm text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500 cursor-pointer border border-slate-800 rounded-xl bg-slate-950 p-2">
+            </div>
+
+            <!-- Formulário Manual -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-white mb-4">Novo Lançamento Manual</h3>
+                <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <input type="date" id="lanc-data" required class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200">
+                    <select id="lanc-tipo" class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200">
                         <option value="Despesa">Despesa</option>
                         <option value="Receita">Receita</option>
                     </select>
-                    <input type="text" id="lanc-desc" placeholder="Descrição (ex: Supermercado)" required class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
-                    <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
-                    <select id="lanc-cat" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
+                    <input type="text" id="lanc-desc" placeholder="Descrição (ex: Supermercado)" required class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200">
+                    <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200">
+                    <select id="lanc-cat" class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200">
                         <option value="Alimentação">Alimentação</option>
                         <option value="Moradia">Moradia</option>
                         <option value="Transporte">Transporte</option>
                         <option value="Lazer">Lazer</option>
                         <option value="Investimentos">Investimentos</option>
                     </select>
-                    <select id="lanc-pag" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm">
-                        <option value="PIX">PIX</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Débito">Débito</option>
-                    </select>
-                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium p-2.5 rounded-lg text-sm transition sm:col-span-2">Adicionar Lançamento</button>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium p-3 rounded-xl text-sm transition">Adicionar na Base</button>
                 </form>
             </div>
 
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 overflow-x-auto">
-                <h3 class="text-lg font-semibold mb-4">Histórico</h3>
+            <!-- Histórico -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl overflow-x-auto">
+                <h3 class="text-base font-semibold text-white mb-4">Histórico de Movimentações</h3>
                 <table class="w-full text-left border-collapse text-sm">
                     <thead>
-                        <tr class="border-b border-slate-700 text-slate-400">
+                        <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
                             <th class="p-3">Data</th>
                             <th class="p-3">Tipo</th>
                             <th class="p-3">Descrição</th>
                             <th class="p-3">Categoria</th>
                             <th class="p-3">Valor</th>
-                            <th class="p-3">Pagamento</th>
                         </tr>
                     </thead>
                     <tbody id="tabela-lancamentos">
-                        <!-- Preenchido via JS -->
+                        <!-- Preenchido via JavaScript -->
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- CARTÃO -->
+        <!-- CARTÃO DE CRÉDITO -->
         <div id="tab-cartao" class="hidden space-y-6">
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h3 class="text-lg font-semibold mb-2">Controle de Fatura e Limite</h3>
-                <p class="text-slate-400 text-sm mb-4">Acompanhe seus gastos no crédito.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                        <span class="text-slate-400 text-xs">Limite Total</span>
-                        <h4 class="text-xl font-bold text-slate-100">R$ 5.000,00</h4>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-white mb-2">Faturas & Limites</h3>
+                <p class="text-slate-400 text-sm mb-6">Acompanhamento do seu compromisso mensal com o crédito.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 text-xs">Fatura Atual Comprometida</span>
+                        <h4 id="cartao-fatura-atual" class="text-2xl font-bold text-amber-400 mt-1">R$ 0,00</h4>
                     </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                        <span class="text-slate-400 text-xs">Fatura Atual</span>
-                        <h4 id="cartao-fatura-atual" class="text-xl font-bold text-amber-400">R$ 0,00</h4>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700">
-                        <span class="text-slate-400 text-xs">Limite Disponível</span>
-                        <h4 id="cartao-limite-disp" class="text-xl font-bold text-emerald-400">R$ 5.000,00</h4>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 text-xs">Limite Livre Disponível</span>
+                        <h4 id="cartao-limite-disp" class="text-2xl font-bold text-emerald-400 mt-1">R$ 5.000,00</h4>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- DÍVIDAS -->
+        <!-- QUITAÇÃO DE DÍVIDAS -->
         <div id="tab-dividas" class="hidden space-y-6">
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h3 class="text-lg font-semibold mb-2">Plano de Quitação (Sair do Vermelho)</h3>
-                <p class="text-slate-400 text-sm mb-4">Foque nos juros mais altos primeiro (Método Cascata).</p>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-white mb-2">Plano Cascata (Sair do Vermelho)</h3>
+                <p class="text-slate-400 text-sm mb-4">Estratégia focada em amortizar as maiores taxas primeiro.</p>
                 <div class="space-y-3">
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700 flex justify-between items-center">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
                         <div>
-                            <h4 class="font-semibold">Rotativo Cartão</h4>
-                            <p class="text-xs text-slate-400">Juros: 12% a.m. | Saldo: R$ 2.500,00</p>
+                            <h4 class="font-medium text-white text-sm">Rotativo Cartão / Cheque Especial</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Taxa estimada: 12% a.m.</p>
                         </div>
-                        <span class="bg-rose-900/50 text-rose-300 text-xs px-2.5 py-1 rounded-full border border-rose-700">Prioridade Máxima</span>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700 flex justify-between items-center">
-                        <div>
-                            <h4 class="font-semibold">Empréstimo Pessoal</h4>
-                            <p class="text-xs text-slate-400">Juros: 5% a.m. | Saldo: R$ 4.200,00</p>
-                        </div>
-                        <span class="bg-amber-900/50 text-amber-300 text-xs px-2.5 py-1 rounded-full border border-amber-700">Em Andamento</span>
+                        <span class="bg-rose-500/10 text-rose-400 text-xs px-2.5 py-1 rounded-full border border-rose-500/20 font-medium">Prioridade 1</span>
                     </div>
                 </div>
             </div>
@@ -148,13 +156,13 @@
 
         <!-- INVESTIMENTOS -->
         <div id="tab-investimentos" class="hidden space-y-6">
-            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                <h3 class="text-lg font-semibold mb-4">Minha Carteira & Metas</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><span class="text-xs text-slate-400">MXRF11</span><h4 class="font-bold text-emerald-400">FII (Papel)</h4></div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><span class="text-xs text-slate-400">GARE11</span><h4 class="font-bold text-emerald-400">FII (Tijolo)</h4></div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><span class="text-xs text-slate-400">KNSC11</span><h4 class="font-bold text-emerald-400">FII (Papel)</h4></div>
-                    <div class="bg-slate-900 p-4 rounded-lg border border-slate-700"><span class="text-xs text-slate-400">Tesouro Direto</span><h4 class="font-bold text-sky-400">Renda Fixa</h4></div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+                <h3 class="text-base font-semibold text-white mb-4">Minha Carteira (FIIs & Renda Fixa)</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center"><span class="text-xs text-slate-400">FII Papel</span><h4 class="font-bold text-emerald-400 text-lg mt-1">MXRF11</h4></div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center"><span class="text-xs text-slate-400">FII Tijolo</span><h4 class="font-bold text-emerald-400 text-lg mt-1">GARE11</h4></div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center"><span class="text-xs text-slate-400">FII Papel</span><h4 class="font-bold text-emerald-400 text-lg mt-1">KNSC11</h4></div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center"><span class="text-xs text-slate-400">Tesouro Direto</span><h4 class="font-bold text-sky-400 text-lg mt-1">Renda Fixa</h4></div>
                 </div>
             </div>
         </div>
@@ -162,18 +170,18 @@
     </main>
 
     <script>
-        let dados = JSON.parse(localStorage.getItem('planner_diou')) || { lancamentos: [] };
+        let dados = JSON.parse(localStorage.getItem('grana_zen_diou')) || { lancamentos: [] };
 
         function switchTab(tabId) {
             document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
             
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-emerald-600', 'text-white');
-                btn.classList.add('bg-slate-700', 'text-slate-300');
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white/20', 'text-white');
+                btn.classList.add('text-white/80', 'hover:bg-white/10');
             });
-            event.target.classList.remove('bg-slate-700', 'text-slate-300');
-            event.target.classList.add('bg-emerald-600', 'text-white');
+            event.target.classList.remove('text-white/80', 'hover:bg-white/10');
+            event.target.classList.add('bg-white/20', 'text-white');
             atualizarDashboard();
         }
 
@@ -184,15 +192,53 @@
                 tipo: document.getElementById('lanc-tipo').value,
                 desc: document.getElementById('lanc-desc').value,
                 valor: parseFloat(document.getElementById('lanc-valor').value),
-                cat: document.getElementById('lanc-cat').value,
-                pag: document.getElementById('lanc-pag').value
+                cat: document.getElementById('lanc-cat').value
             };
             dados.lancamentos.push(novo);
-            localStorage.setItem('planner_diou', JSON.stringify(dados));
+            salvarEAtualizar();
             document.getElementById('form-lancamento').reset();
+        }
+
+        // Leitor de CSV Integrado
+        document.getElementById('csv-file-input').addEventListener('change', function(e) {
+            const arquivo = e.target.files[0];
+            if (!arquivo) return;
+
+            const leitor = new FileReader();
+            leitor.onload = function(evt) {
+                const linhas = evt.target.result.split('\n');
+                let importados = 0;
+
+                linhas.forEach((linha, indice) => {
+                    if (indice === 0 || !linha.trim()) return; // Pula cabeçalho ou linhas vazias
+                    const colunas = linha.split(',');
+                    if (colunas.length >= 3) {
+                        const data = colunas[0].trim().replace(/['"]/g, '') || new Date().toISOString().split('T')[0];
+                        const desc = colunas[1].trim().replace(/['"]/g, '') || 'Importado CSV';
+                        const valorRaw = parseFloat(colunas[2].trim().replace(/['"]/g, '').replace(',', '.')) || 0;
+                        
+                        dados.lancamentos.push({
+                            data: data,
+                            tipo: valorRaw < 0 ? 'Despesa' : 'Receita',
+                            desc: desc,
+                            valor: Math.abs(valorRaw),
+                            cat: 'Outros'
+                        });
+                        importados++;
+                    }
+                });
+
+                salvarEAtualizar();
+                alert(`${importados} lançamentos importados com sucesso via CSV!`);
+                e.target.value = '';
+            };
+            leitor.readAsText(arquivo);
+        });
+
+        function salvarEAtualizar() {
+            localStorage.setItem('grana_zen_diou', JSON.stringify(dados));
             renderizarTabela();
             atualizarDashboard();
-            alert('Lançamento adicionado com sucesso!');
         }
 
         function renderizarTabela() {
@@ -200,14 +246,13 @@
             tbody.innerHTML = '';
             dados.lancamentos.forEach(item => {
                 const tr = document.createElement('tr');
-                tr.className = 'border-b border-slate-700/50 hover:bg-slate-700/20';
+                tr.className = 'border-b border-slate-800/60 hover:bg-slate-800/30';
                 tr.innerHTML = `
-                    <td class="p-3">${item.data}</td>
-                    <td class="p-3"><span class="px-2 py-0.5 rounded text-xs ${item.tipo === 'Receita' ? 'bg-emerald-900/50 text-emerald-300' : 'bg-rose-900/50 text-rose-300'}">${item.tipo}</span></td>
-                    <td class="p-3">${item.desc}</td>
-                    <td class="p-3">${item.cat}</td>
+                    <td class="p-3 text-slate-300">${item.data}</td>
+                    <td class="p-3"><span class="px-2.5 py-0.5 rounded-md text-xs font-medium ${item.tipo === 'Receita' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'}">${item.tipo}</span></td>
+                    <td class="p-3 text-slate-200">${item.desc}</td>
+                    <td class="p-3 text-slate-400">${item.cat}</td>
                     <td class="p-3 font-semibold ${item.tipo === 'Receita' ? 'text-emerald-400' : 'text-slate-100'}">R$ ${item.valor.toFixed(2)}</td>
-                    <td class="p-3 text-xs text-slate-400">${item.pag}</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -216,21 +261,25 @@
         function atualizarDashboard() {
             let totalRec = 0;
             let totalDesp = 0;
-            let totalCartao = 0;
 
             dados.lancamentos.forEach(item => {
                 if(item.tipo === 'Receita') totalRec += item.valor;
                 if(item.tipo === 'Despesa') totalDesp += item.valor;
-                if(item.pag === 'Cartão de Crédito') totalCartao += item.valor;
             });
 
             document.getElementById('dash-receitas').innerText = `R$ ${totalRec.toFixed(2)}`;
             document.getElementById('dash-despesas').innerText = `R$ ${totalDesp.toFixed(2)}`;
             document.getElementById('dash-saldo').innerText = `R$ ${(totalRec - totalDesp).toFixed(2)}`;
-            document.getElementById('dash-cartao').innerText = `R$ ${totalCartao.toFixed(2)}`;
-            document.getElementById('cartao-fatura-atual').innerText = `R$ ${totalCartao.toFixed(2)}`;
-            document.getElementById('cartao-limite-disp').innerText = `R$ ${(5000 - totalCartao).toFixed(2)}`;
+            document.getElementById('dash-cartao').innerText = `R$ 0,00`;
+            document.getElementById('cartao-fatura-atual').innerText = `R$ 0,00`;
+            document.getElementById('cartao-limite-disp').innerText = `R$ 5.000,00`;
         }
+
+        // Função de webhook preparada para receber dados externos (Make.com / WhatsApp AI)
+        window.receberDadoExternoWhatsApp = function(transacao) {
+            dados.lancamentos.push(transacao);
+            salvarEAtualizar();
+        };
 
         window.onload = () => {
             renderizarTabela();
