@@ -65,13 +65,14 @@
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                 </button>
-                <div id="menu-opcoes" class="hidden absolute right-0 top-11 w-60 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
-                    <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">📁 Importar Extrato CSV</button>
-                    <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-500 hover:bg-purple-50 dark:hover:bg-purple-950/50">🤖 Conectar WhatsApp / IA</button>
+                <!-- MENU EXPANSÍVEL CORRIGIDO -->
+                <div id="menu-opcoes" class="hidden absolute right-0 top-12 w-64 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
+                    <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">📁 Importar Extrato CSV</button>
+                    <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-emerald-500 hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">🤖 Conectar WhatsApp / IA</button>
                     <hr class="border-slate-100 dark:border-purple-950 my-1">
-                    <button onclick="alternarTema()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">🎨 Alternar Tema</button>
-                    <button onclick="reiniciarDoZero()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">⚠️ Reiniciar do Zero (Apagar Dados)</button>
-                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-500 hover:bg-slate-100">🚪 Sair da Conta</button>
+                    <button onclick="alternarTema()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">🎨 Alternar Tema</button>
+                    <button onclick="reiniciarDoZero()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 flex items-center gap-2">⚠️ Reiniciar do Zero (Apagar Dados)</button>
+                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-500 hover:bg-slate-100 flex items-center gap-2">🚪 Sair da Conta</button>
                 </div>
             </div>
         </div>
@@ -274,7 +275,7 @@
     </div>
 
     <script>
-        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v6')) || { 
+        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v7')) || { 
             lancamentos: [], dividas: [], investimentos: [], 
             contas: [{nome: 'Conta Principal', saldo: 1000}], 
             cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer'], metas: [], limites: {} 
@@ -288,7 +289,7 @@
 
         function reiniciarDoZero() {
             if(confirm('Tem certeza que deseja apagar todos os dados e reiniciar do zero? Essa ação não pode ser desfeita.')) {
-                localStorage.removeItem('control_cash_diou_v6');
+                localStorage.removeItem('control_cash_diou_v7');
                 location.reload();
             }
         }
@@ -400,7 +401,7 @@
         }
 
         function salvarEAtualizar() {
-            localStorage.setItem('control_cash_diou_v6', JSON.stringify(dados));
+            localStorage.setItem('control_cash_diou_v7', JSON.stringify(dados));
             atualizarTudo();
         }
 
@@ -465,7 +466,7 @@
             dados.categorias.forEach(cat => {
                 let teto = dados.limites[cat] || 0;
                 let realizado = dados.lancamentos.filter(l => l.cat === cat && l.tipo === 'Despesa').reduce((acc, l) => acc + l.valor, 0);
-                let status = teto > 0 ? (realized > teto ? '<span class="text-rose-500 font-bold">Estourado</span>' : '<span class="text-emerald-400 font-bold">Dentro do Teto</span>') : '<span class="text-slate-500">Sem limite</span>';
+                let status = teto > 0 ? (realizado > teto ? '<span class="text-rose-500 font-bold">Estourado</span>' : '<span class="text-emerald-400 font-bold">Dentro do Teto</span>') : '<span class="text-slate-500">Sem limite</span>';
                 tbodyLim.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3">${cat}</td><td class="p-3">${teto > 0 ? 'R$ ' + teto.toFixed(2) : '-'}</td><td class="p-3">R$ ${realized.toFixed(2)}</td><td class="p-3">${status}</td></tr>`;
             });
         }
