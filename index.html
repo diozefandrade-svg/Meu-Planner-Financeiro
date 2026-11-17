@@ -17,7 +17,7 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-purple-50/30 to-white dark:from-[#090514] dark:via-[#130a24] dark:to-[#020005] text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
     
-    <!-- TELA DE LOGIN SEGURA -->
+    <!-- TELA DE LOGIN -->
     <div id="tela-login" class="fixed inset-0 bg-slate-950/95 dark:bg-[#06020a]/98 z-50 flex items-center justify-center p-4 backdrop-blur-md">
         <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/40 p-8 rounded-3xl shadow-2xl max-w-md w-full space-y-6 text-center">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 mx-auto flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-purple-500/30">C</div>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <!-- NAVBAR SUPERIOR COMPLETA -->
+    <!-- NAVBAR SUPERIOR -->
     <header class="bg-white/90 dark:bg-[#0b0517]/90 backdrop-blur-md border-b border-slate-200 dark:border-purple-900/30 sticky top-0 z-40 px-4 py-2.5">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
             <div class="flex items-center gap-2 shrink-0">
@@ -59,7 +59,7 @@
                 <button onclick="switchTab('investimentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Investimentos</button>
             </nav>
             <div class="shrink-0 relative">
-                <button id="btn-menu" onclick="toggleMenuOpcoes(event)" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center cursor-pointer">
+                <button id="btn-menu" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center cursor-pointer">
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
@@ -79,7 +79,7 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-1 space-y-6">
         
-        <!-- DASHBOARD COM GRÁFICOS REAIS -->
+        <!-- DASHBOARD -->
         <div id="tab-dashboard" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
@@ -96,10 +96,9 @@
                 </div>
             </div>
 
-            <!-- BLOCO DE GRÁFICOS Chart.js -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-sm font-bold text-slate-200 mb-4">Fluxo de Caixa (Receitas vs Despesas)</h4>
+                    <h4 class="text-sm font-bold text-slate-200 mb-4">Fluxo de Caixa</h4>
                     <div class="relative h-64"><canvas id="chartFluxo"></canvas></div>
                 </div>
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
@@ -112,7 +111,7 @@
         <!-- LANÇAMENTOS -->
         <div id="tab-lancamentos" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-4">Novo Lançamento Completo</h3>
+                <h3 class="text-base font-semibold mb-4">Novo Lançamento</h3>
                 <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <input type="date" id="lanc-data" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <select id="lanc-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Despesa">Despesa</option><option value="Receita">Receita</option></select>
@@ -136,18 +135,18 @@
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <h3 class="text-base font-semibold mb-4">Gerenciar Categorias</h3>
                 <form onsubmit="adicionarCategoria(event)" class="flex gap-4 mb-6">
-                    <input type="text" id="cat-nome" placeholder="Nova Categoria (ex: Investimentos, Lazer)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
+                    <input type="text" id="cat-nome" placeholder="Nova Categoria" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
                     <button type="submit" class="bg-purple-600 text-white px-6 rounded-xl text-sm font-medium">Adicionar</button>
                 </form>
                 <div id="lista-categorias" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
             </div>
         </div>
 
-        <!-- CONTAS BANCÁRIAS (ATÉ 5) -->
+        <!-- CONTAS BANCÁRIAS (COM EDIÇÃO E EXCLUSÃO) -->
         <div id="tab-contas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold">Contas Bancárias (Máx 5)[cite: 17]</h3>
+                    <h3 class="text-base font-semibold">Contas Bancárias (Máx 5)</h3>
                     <span id="contas-contador" class="text-xs text-purple-400 font-bold">0 / 5</span>
                 </div>
                 <form onsubmit="adicionarConta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
@@ -159,11 +158,11 @@
             </div>
         </div>
 
-        <!-- CARTÕES DE CRÉDITO (ATÉ 8) -->
+        <!-- CARTÕES DE CRÉDITO -->
         <div id="tab-cartao" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold">Cartões de Crédito (Máx 8)[cite: 16]</h3>
+                    <h3 class="text-base font-semibold">Cartões de Crédito (Máx 8)</h3>
                     <span id="cartao-contador" class="text-xs text-purple-400 font-bold">0 / 8</span>
                 </div>
                 <form onsubmit="adicionarCartao(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -180,14 +179,14 @@
         <!-- DÍVIDAS / EMPRÉSTIMOS -->
         <div id="tab-dividas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos (Cronograma)</h3>
+                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos</h3>
                 <form onsubmit="adicionarDivida(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <input type="text" id="div-nome" placeholder="Dívida / Empréstimo" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="div-valor" placeholder="Valor Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" id="div-parcelas" placeholder="Total de Parcelas" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="date" id="div-venc" placeholder="Primeiro Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.1" id="div-juros" placeholder="Juros % a.m." required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar Dívida Inteligente</button>
+                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar Dívida</button>
                 </form>
                 <table class="w-full text-left text-sm">
                     <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Prioridade</th><th class="p-3">Dívida</th><th class="p-3">Valor Total</th><th class="p-3">Parcelas</th><th class="p-3">Vencimento</th><th class="p-3">Juros</th></tr></thead>
@@ -199,7 +198,7 @@
         <!-- METAS -->
         <div id="tab-metas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-4">Minhas Metas Financeiras[cite: 15]</h3>
+                <h3 class="text-base font-semibold mb-4">Minhas Metas Financeiras</h3>
                 <form onsubmit="adicionarMeta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <input type="text" id="meta-nome" placeholder="Nome da Meta" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="meta-valor" placeholder="Valor Alvo (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
@@ -212,7 +211,7 @@
         <!-- LIMITES DE GASTOS -->
         <div id="tab-limites" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Limites de Gastos por Categoria[cite: 14]</h3>
+                <h3 class="text-base font-semibold mb-2">Limites de Gastos por Categoria</h3>
                 <form onsubmit="definirLimite(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <select id="limite-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
                     <input type="number" step="0.01" id="limite-valor" placeholder="Teto de Gasto (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
@@ -225,10 +224,10 @@
             </div>
         </div>
 
-        <!-- INVESTIMENTOS (ESTILO INVESTIDOR10) -->
+        <!-- INVESTIMENTOS -->
         <div id="tab-investimentos" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Investimentos (Estilo Investidor10)[cite: 12, 13]</h3>
+                <h3 class="text-base font-semibold mb-2">Investimentos (Estilo Investidor10)</h3>
                 <form onsubmit="adicionarInvestimento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <select id="inv-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                         <option value="Ações">Ações</option><option value="FIIs">FIIs</option><option value="Stocks">Stocks</option><option value="Tesouro Direto">Tesouro Direto</option><option value="Criptomoedas">Criptomoedas</option>
@@ -264,9 +263,9 @@
         </div>
     </div>
 
-    <!-- SCRIPT COMPLETO E ROBUSTO -->
+    <!-- SCRIPT BLINDADO E CORRIGIDO -->
     <script>
-        let dados = JSON.parse(localStorage.getItem('control_cash_pro')) || { 
+        let dados = JSON.parse(localStorage.getItem('control_cash_pro_v2')) || { 
             lancamentos: [], dividas: [], investimentos: [], 
             contas: [{nome: 'Conta Principal', saldo: 1000}], 
             cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer', 'Investimentos'], metas: [], limites: {} 
@@ -280,8 +279,8 @@
         function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.remove('hidden'); }
 
         function reiniciarDoZero() {
-            if(confirm('Tem certeza que deseja apagar todos os dados e reiniciar do zero?')) {
-                localStorage.removeItem('control_cash_pro');
+            if(confirm('ATENÇÃO: Deseja apagar todos os dados e reiniciar o sistema do zero?')) {
+                localStorage.removeItem('control_cash_pro_v2');
                 location.reload();
             }
         }
@@ -295,10 +294,11 @@
             atualizarTudo();
         }
 
-        function toggleMenuOpcoes(e) {
+        // Event listener direto para o menu abrir sem falhar no celular
+        document.getElementById('btn-menu').addEventListener('click', function(e) {
             e.stopPropagation();
             document.getElementById('menu-opcoes').classList.toggle('hidden');
-        }
+        });
 
         window.onclick = function(event) {
             if (!event.target.matches('#btn-menu') && !event.target.closest('#menu-opcoes')) {
@@ -311,16 +311,34 @@
         function fecharModais() { document.getElementById('modal-csv').classList.add('hidden'); document.getElementById('modal-whatsapp').classList.add('hidden'); }
         function alternarTema() { document.getElementById('menu-opcoes').classList.add('hidden'); document.documentElement.classList.toggle('dark'); }
 
+        // Funções de Contas com Editar e Excluir
         function adicionarConta(e) {
             e.preventDefault();
-            if (dados.contas.length >= 5) { alert('Limite de 5 contas atingido[cite: 17]!'); return; }
+            if (dados.contas.length >= 5) { alert('Limite de 5 contas atingido!'); return; }
             dados.contas.push({ nome: document.getElementById('conta-nome').value, saldo: parseFloat(document.getElementById('conta-saldo').value) });
             salvarEAtualizar(); document.getElementById('form-conta').reset();
         }
 
+        function editarConta(index) {
+            let novoNome = prompt('Novo nome da conta:', dados.contas[index].nome);
+            let novoSaldo = prompt('Novo saldo da conta (R$):', dados.contas[index].saldo);
+            if (novoNome !== null && novoSaldo !== null) {
+                dados.contas[index].nome = novoNome;
+                dados.contas[index].saldo = parseFloat(novoSaldo) || 0;
+                salvarEAtualizar();
+            }
+        }
+
+        function excluirConta(index) {
+            if (confirm(`Deseja excluir a conta "${dados.contas[index].nome}"?`)) {
+                dados.contas.splice(index, 1);
+                salvarEAtualizar();
+            }
+        }
+
         function adicionarCartao(e) {
             e.preventDefault();
-            if (dados.cartoes.length >= 8) { alert('Limite de 8 cartões atingido[cite: 16]!'); return; }
+            if (dados.cartoes.length >= 8) { alert('Limite de 8 cartões atingido!'); return; }
             dados.cartoes.push({
                 nome: document.getElementById('cc-nome').value,
                 limite: parseFloat(document.getElementById('cc-limite').value),
@@ -392,48 +410,35 @@
         }
 
         function salvarEAtualizar() {
-            localStorage.setItem('control_cash_pro', JSON.stringify(dados));
+            localStorage.setItem('control_cash_pro_v2', JSON.stringify(dados));
             atualizarTudo();
         }
 
-        // Variáveis globais para os gráficos
         let chartFluxoInstancia = null;
         let chartCatInstancia = null;
 
         function atualizarGraficos(totalRec, totalDesp) {
-            // Gráfico Fluxo de Caixa
             const ctxFluxo = document.getElementById('chartFluxo').getContext('2d');
             if(chartFluxoInstancia) chartFluxoInstancia.destroy();
             chartFluxoInstancia = new Chart(ctxFluxo, {
                 type: 'bar',
                 data: {
                     labels: ['Receitas', 'Despesas'],
-                    datasets: [{
-                        label: 'R$',
-                        data: [totalRec, totalDesp],
-                        backgroundColor: ['#10b981', '#f43f5e'],
-                        borderRadius: 8
-                    }]
+                    datasets: [{ label: 'R$', data: [totalRec, totalDesp], backgroundColor: ['#10b981', '#f43f5e'], borderRadius: 8 }]
                 },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
 
-            // Gráfico Categorias
             const ctxCat = document.getElementById('chartCategorias').getContext('2d');
             let catsMap = {};
-            dados.lancamentos.filter(l => l.tipo === 'Despesa').forEach(l => {
-                catsMap[l.cat] = (catsMap[l.cat] || 0) + l.valor;
-            });
+            dados.lancamentos.filter(l => l.tipo === 'Despesa').forEach(l => { catsMap[l.cat] = (catsMap[l.cat] || 0) + l.valor; });
             
             if(chartCatInstancia) chartCatInstancia.destroy();
             chartCatInstancia = new Chart(ctxCat, {
                 type: 'doughnut',
                 data: {
                     labels: Object.keys(catsMap).length ? Object.keys(catsMap) : ['Sem dados'],
-                    datasets: [{
-                        data: Object.keys(catsMap).length ? Object.values(catsMap) : [1],
-                        backgroundColor: ['#9333ea', '#3b82f6', '#10b981', '#f59e0b', '#f43f5e', '#6366f1']
-                    }]
+                    datasets: [{ data: Object.keys(catsMap).length ? Object.values(catsMap) : [1], backgroundColor: ['#9333ea', '#3b82f6', '#10b981', '#f59e0b', '#f43f5e', '#6366f1'] }]
                 },
                 options: { responsive: true, maintainAspectRatio: false }
             });
@@ -443,9 +448,19 @@
             document.getElementById('contas-contador').innerText = `${dados.contas.length} / 5`;
             let gridContas = document.getElementById('grid-contas'); gridContas.innerHTML = '';
             let totalContas = 0;
-            dados.contas.forEach((c) => {
+            dados.contas.forEach((c, idx) => {
                 totalContas += c.saldo;
-                gridContas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/45"><h4 class="font-bold">${c.nome}</h4><p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p></div>`;
+                gridContas.innerHTML += `
+                    <div class="bg-slate-950 p-4 rounded-xl border border-purple-900/45 flex flex-col justify-between space-y-3">
+                        <div>
+                            <h4 class="font-bold text-white">${c.nome}</h4>
+                            <p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p>
+                        </div>
+                        <div class="flex gap-2 pt-2 border-t border-purple-950">
+                            <button onclick="editarConta(${idx})" class="flex-1 bg-purple-950/60 hover:bg-purple-900 text-purple-300 py-1.5 rounded-lg text-xs font-medium transition">Editar</button>
+                            <button onclick="excluirConta(${idx})" class="flex-1 bg-rose-950/60 hover:bg-rose-900 text-rose-300 py-1.5 rounded-lg text-xs font-medium transition">Excluir</button>
+                        </div>
+                    </div>`;
             });
 
             document.getElementById('cartao-contador').innerText = `${dados.cartoes.length} / 8`;
@@ -478,7 +493,6 @@
             document.getElementById('dash-despesas').innerText = `R$ ${totalDesp.toFixed(2)}`;
             document.getElementById('dash-saldo-total').innerText = `R$ ${totalContas.toFixed(2)}`;
 
-            // Atualiza Gráficos
             atualizarGraficos(totalRec, totalDesp);
 
             let tbodyDiv = document.getElementById('tabela-dividas'); tbodyDiv.innerHTML = '';
