@@ -60,17 +60,18 @@
                 <button onclick="switchTab('investimentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Investimentos</button>
             </nav>
             <div class="shrink-0 relative">
-                <button onclick="toggleMenuOpcoes()" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center">
-                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
-                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
-                    <span class="w-4 h-0.5 bg-current rounded-full"></span>
+                <button id="btn-menu" onclick="toggleMenuOpcoes(event)" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center">
+                    <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
+                    <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
+                    <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                 </button>
-                <div id="menu-opcoes" class="hidden absolute right-0 top-11 w-56 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
+                <div id="menu-opcoes" class="hidden absolute right-0 top-11 w-60 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
                     <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">📁 Importar Extrato CSV</button>
                     <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-emerald-500 hover:bg-purple-50 dark:hover:bg-purple-950/50">🤖 Conectar WhatsApp / IA</button>
                     <hr class="border-slate-100 dark:border-purple-950 my-1">
                     <button onclick="alternarTema()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50">🎨 Alternar Tema</button>
-                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50">🚪 Sair</button>
+                    <button onclick="reiniciarDoZero()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20">⚠️ Reiniciar do Zero (Apagar Dados)</button>
+                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-500 hover:bg-slate-100">🚪 Sair da Conta</button>
                 </div>
             </div>
         </div>
@@ -90,7 +91,6 @@
                 <div class="text-xs text-slate-400 font-medium">Ciclo Ativo: <span class="text-purple-400 font-bold">Novembro de 2026</span></div>
             </div>
 
-            <!-- EVOLUÇÃO DE DESPESAS -->
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
                 <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Evolução de Despesas por Mês</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
@@ -104,11 +104,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <div class="flex justify-between"><h4 class="text-sm font-bold text-emerald-400">Receitas</h4></div>
+                    <h4 class="text-sm font-bold text-emerald-400">Receitas</h4>
                     <h3 id="dash-receitas" class="text-2xl font-bold">R$ 0,00</h3>
                 </div>
                 <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <div class="flex justify-between"><h4 class="text-sm font-bold text-rose-400">Despesas</h4></div>
+                    <h4 class="text-sm font-bold text-rose-400">Despesas</h4>
                     <h3 id="dash-despesas" class="text-2xl font-bold">R$ 0,00</h3>
                 </div>
             </div>
@@ -127,8 +127,8 @@
                     <select id="lanc-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Despesa">Despesa</option><option value="Receita">Receita</option></select>
                     <input type="text" id="lanc-desc" placeholder="Descrição" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <select id="lanc-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Alimentação">Alimentação</option><option value="Moradia">Moradia</option></select>
-                    <select id="lanc-conta" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Conta Principal">Conta Principal</option></select>
+                    <select id="lanc-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
+                    <select id="lanc-conta" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
                     <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-2">Salvar Lançamento</button>
                 </form>
             </div>
@@ -143,9 +143,7 @@
         <!-- CATEGORIAS -->
         <div id="tab-categorias" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold">Gerenciar Categorias</h3>
-                </div>
+                <h3 class="text-base font-semibold mb-4">Gerenciar Categorias</h3>
                 <form onsubmit="adicionarCategoria(event)" class="flex gap-4 mb-6">
                     <input type="text" id="cat-nome" placeholder="Nova Categoria (ex: Lazer, Saúde)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
                     <button type="submit" class="bg-purple-600 text-white px-6 rounded-xl text-sm font-medium">Adicionar</button>
@@ -154,7 +152,7 @@
             </div>
         </div>
 
-        <!-- CONTAS BANCÁRIAS (Até 5 contas) -->
+        <!-- CONTAS BANCÁRIAS -->
         <div id="tab-contas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
@@ -170,7 +168,7 @@
             </div>
         </div>
 
-        <!-- CARTÃO DE CRÉDITO (Até 8 cartões) -->
+        <!-- CARTÃO DE CRÉDITO -->
         <div id="tab-cartao" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
@@ -178,27 +176,27 @@
                     <span id="cartao-contador" class="text-xs text-purple-400 font-bold">0 / 8</span>
                 </div>
                 <form onsubmit="adicionarCartao(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <input type="text" id="cc-nome" placeholder="Nome do Cartão (ex: Mastercard)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="text" id="cc-nome" placeholder="Nome do Cartão" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="cc-limite" placeholder="Limite Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" id="cc-feixa" placeholder="Dia Fechamento (ex: 17)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" id="cc-venc" placeholder="Dia Vencimento (ex: 26)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-feixa" placeholder="Dia Fechamento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-venc" placeholder="Dia Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 rounded-xl text-sm sm:col-span-4">Cadastrar Cartão</button>
                 </form>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="grid-cartoes"></div>
             </div>
         </div>
 
-        <!-- DÍVIDAS / EMPRÉSTIMOS COM PARCELAS E VENCIMENTO -->
+        <!-- DÍVIDAS / EMPRÉSTIMOS -->
         <div id="tab-dividas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos (Parcelas & Vencimento)</h3>
+                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos</h3>
                 <form onsubmit="adicionarDivida(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <input type="text" id="div-nome" placeholder="Dívida / Empréstimo" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="div-valor" placeholder="Valor Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" id="div-parcelas" placeholder="Total de Parcelas" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="date" id="div-venc" placeholder="Primeiro Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.1" id="div-juros" placeholder="Juros % a.m." required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar com Cronograma de Parcelas</button>
+                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar Dívida</button>
                 </form>
                 <table class="w-full text-left text-sm">
                     <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Prioridade</th><th class="p-3">Dívida</th><th class="p-3">Valor Total</th><th class="p-3">Parcelas</th><th class="p-3">Vencimento</th><th class="p-3">Juros</th></tr></thead>
@@ -210,9 +208,9 @@
         <!-- METAS -->
         <div id="tab-metas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-4">Minhas Metas Financeiras</h3>
+                <h3 class="text-base font-semibold mb-4">Minhas Metas Financeiras[cite: 15]</h3>
                 <form onsubmit="adicionarMeta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <input type="text" id="meta-nome" placeholder="Nome da Meta (ex: Quitar Empréstimo)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="text" id="meta-nome" placeholder="Nome da Meta" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="meta-valor" placeholder="Valor Alvo (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm">Criar Meta</button>
                 </form>
@@ -223,40 +221,35 @@
         <!-- LIMITES DE GASTOS -->
         <div id="tab-limites" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Limites de Gastos por Categoria</h3>
-                <p class="text-xs text-slate-400 mb-4">Planeje o teto máximo que pode gastar em cada categoria por mês.</p>
+                <h3 class="text-base font-semibold mb-2">Limites de Gastos por Categoria[cite: 14]</h3>
                 <form onsubmit="definirLimite(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                    <select id="limite-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Alimentação">Alimentação</option><option value="Moradia">Moradia</option></select>
+                    <select id="limite-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
                     <input type="number" step="0.01" id="limite-valor" placeholder="Teto de Gasto (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm sm:col-span-2">Definir Limite</button>
                 </form>
                 <table class="w-full text-left text-sm">
-                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Categoria</th><th class="p-3">Teto Planejado</th><th class="p-3">Realizado no Mês</th><th class="p-3">Status</th></tr></thead>
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Categoria</th><th class="p-3">Teto Planejado</th><th class="p-3">Realizado</th><th class="p-3">Status</th></tr></thead>
                     <tbody id="tabela-limites"></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- INVESTIMENTOS ESTILO INVESTIDOR10 -->
+        <!-- INVESTIMENTOS -->
         <div id="tab-investimentos" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <h3 class="text-base font-semibold mb-2">Investimentos (Estilo Investidor10)[cite: 12, 13]</h3>
                 <form onsubmit="adicionarInvestimento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <select id="inv-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                        <option value="Ações">Ações</option>
-                        <option value="FIIs">FIIs</option>
-                        <option value="Stocks">Stocks</option>
-                        <option value="Tesouro Direto">Tesouro Direto</option>
-                        <option value="Criptomoedas">Criptomoedas</option>
+                        <option value="Ações">Ações</option><option value="FIIs">FIIs</option><option value="Stocks">Stocks</option><option value="Tesouro Direto">Tesouro Direto</option><option value="Criptomoedas">Criptomoedas</option>
                     </select>
-                    <input type="text" id="inv-ativo" placeholder="Ativo (ex: MXRF11, Selic)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="text" id="inv-ativo" placeholder="Ativo (ex: MXRF11)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="date" id="inv-data" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.001" id="inv-qtd" placeholder="Quantidade" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="inv-preco" placeholder="Preço (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Adicionar Aporte no Ativo</button>
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Adicionar Aporte</button>
                 </form>
                 <table class="w-full text-left text-sm">
-                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Data</th><th class="p-3">Tipo</th><th class="p-3">Ativo</th><th class="p-3">Qtd</th><th class="p-3">Preço Médio</th><th class="p-3">Total Investido</th></tr></thead>
+                    <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Data</th><th class="p-3">Tipo</th><th class="p-3">Ativo</th><th class="p-3">Qtd</th><th class="p-3">Preço Médio</th><th class="p-3">Total</th></tr></thead>
                     <tbody id="tabela-investimentos"></tbody>
                 </table>
             </div>
@@ -275,13 +268,13 @@
     <div id="modal-whatsapp" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white dark:bg-[#120822] border border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4">
             <h3 class="text-lg font-bold text-emerald-400">🤖 WhatsApp & IA</h3>
-            <p class="text-xs text-slate-400">Webhook configurado para receber seus gastos via bot.</p>
+            <p class="text-xs text-slate-400">Webhook pronto para receber seus gastos via bot.</p>
             <button onclick="fecharModais()" class="w-full bg-slate-800 text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
         </div>
     </div>
 
     <script>
-        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v5')) || { 
+        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v6')) || { 
             lancamentos: [], dividas: [], investimentos: [], 
             contas: [{nome: 'Conta Principal', saldo: 1000}], 
             cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer'], metas: [], limites: {} 
@@ -291,7 +284,14 @@
 
         function fazerLogin(e) { e.preventDefault(); localStorage.setItem('control_cash_user', document.getElementById('login-email').value); document.getElementById('tela-login').classList.add('hidden'); }
         function loginComGoogle() { localStorage.setItem('control_cash_user', 'google@gmail.com'); document.getElementById('tela-login').classList.add('hidden'); }
-        function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.remove('hidden'); }
+        function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.add('hidden'); }
+
+        function reiniciarDoZero() {
+            if(confirm('Tem certeza que deseja apagar todos os dados e reiniciar do zero? Essa ação não pode ser desfeita.')) {
+                localStorage.removeItem('control_cash_diou_v6');
+                location.reload();
+            }
+        }
 
         function switchTab(tabId) {
             document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
@@ -302,7 +302,17 @@
             atualizarTudo();
         }
 
-        function toggleMenuOpcoes() { document.getElementById('menu-opcoes').classList.toggle('hidden'); }
+        function toggleMenuOpcoes(e) {
+            e.stopPropagation();
+            document.getElementById('menu-opcoes').classList.toggle('hidden');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('#btn-menu') && !event.target.closest('#menu-opcoes')) {
+                document.getElementById('menu-opcoes').classList.add('hidden');
+            }
+        }
+
         function abrirModalCsv() { document.getElementById('menu-opcoes').classList.add('hidden'); document.getElementById('modal-csv').classList.remove('hidden'); }
         function abrirModalWhatsapp() { document.getElementById('menu-opcoes').classList.add('hidden'); document.getElementById('modal-whatsapp').classList.remove('hidden'); }
         function fecharModais() { document.getElementById('modal-csv').classList.add('hidden'); document.getElementById('modal-whatsapp').classList.add('hidden'); }
@@ -310,7 +320,7 @@
 
         function adicionarConta(e) {
             e.preventDefault();
-            if (dados.contas.length >= 5) { alert('Limite máximo de 5 contas atingido!'); return; }
+            if (dados.contas.length >= 5) { alert('Limite máximo de 5 contas atingido![cite: 17]'); return; }
             dados.contas.push({ nome: document.getElementById('conta-nome').value, saldo: parseFloat(document.getElementById('conta-saldo').value) });
             salvarEAtualizar(); document.getElementById('form-conta').reset();
         }
@@ -390,28 +400,25 @@
         }
 
         function salvarEAtualizar() {
-            localStorage.setItem('control_cash_diou_v5', JSON.stringify(dados));
+            localStorage.setItem('control_cash_diou_v6', JSON.stringify(dados));
             atualizarTudo();
         }
 
         function atualizarTudo() {
-            // Contas
             document.getElementById('contas-contador').innerText = `${dados.contas.length} / 5`;
             let gridContas = document.getElementById('grid-contas'); gridContas.innerHTML = '';
             let totalContas = 0;
-            dados.contas.forEach((c, idx) => {
+            dados.contas.forEach((c) => {
                 totalContas += c.saldo;
                 gridContas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40"><h4 class="font-bold">${c.nome}</h4><p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p></div>`;
             });
 
-            // Cartões
             document.getElementById('cartao-contador').innerText = `${dados.cartoes.length} / 8`;
             let gridCartoes = document.getElementById('grid-cartoes'); gridCartoes.innerHTML = '';
             dados.cartoes.forEach(cc => {
                 gridCartoes.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40 space-y-2"><div class="flex justify-between"><h4 class="font-bold">${cc.nome}</h4><span class="text-xs text-slate-400">Venc. Dia ${cc.vencimento}</span></div><p class="text-xs text-slate-400">Limite Total: R$ ${cc.limite.toFixed(2)}</p></div>`;
             });
 
-            // Selects e Tabelas
             let selCat = document.getElementById('lanc-cat'); selCat.innerHTML = '';
             let selLim = document.getElementById('limite-cat'); selLim.innerHTML = '';
             dados.categorias.forEach(cat => {
@@ -420,12 +427,11 @@
             });
 
             let selConta = document.getElementById('lanc-conta'); selConta.innerHTML = '';
-            dados.contas.forEach(c => selConta.innerHTML += `<option value="${c.nome}">${c.nome}</option>');`);
+            dados.contas.forEach(c => selConta.innerHTML += `<option value="${c.nome}">${c.nome}</option>`);
 
             let listaCat = document.getElementById('lista-categorias'); listaCat.innerHTML = '';
             dados.categorias.forEach(cat => listaCat.innerHTML += `<div class="bg-slate-950 p-3 rounded-xl border border-purple-900/30 flex justify-between"><span>${cat}</span></div>`);
 
-            // Lançamentos & Dashboard
             let totalRec = 0, totalDesp = 0;
             let tbodyLanc = document.getElementById('tabela-lancamentos'); tbodyLanc.innerHTML = '';
             dados.lancamentos.forEach(item => {
@@ -438,24 +444,29 @@
             document.getElementById('dash-tot-mes').innerText = `R$ ${totalDesp.toFixed(2)}`;
             document.getElementById('dash-saldo-total').innerText = `R$ ${totalContas.toFixed(2)}`;
 
-            // Dívidas
             let tbodyDiv = document.getElementById('tabela-dividas'); tbodyDiv.innerHTML = '';
             [...dados.dividas].sort((a,b)=>b.juros-a.juros).forEach((d, i) => {
                 tbodyDiv.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3"><span class="px-2 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-500">Prioridade ${i+1}</span></td><td class="p-3">${d.nome}</td><td class="p-3">R$ ${d.valor.toFixed(2)}</td><td class="p-3">${d.parcelas}x</td><td class="p-3">${d.vencimento}</td><td class="p-3 text-rose-400">${d.juros}%</td></tr>`;
             });
 
-            // Metas
             let listaMetas = document.getElementById('lista-metas'); listaMetas.innerHTML = '';
             dados.metas.forEach(m => {
                 let perc = Math.min(100, (m.alocado / m.valor) * 100).toFixed(0);
                 listaMetas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40 space-y-2"><div class="flex justify-between font-semibold"><span>${m.nome}</span><span>R$ ${m.alocado.toFixed(2)} / R$ ${m.valor.toFixed(2)}</span></div><div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden"><div class="bg-purple-600 h-full" style="width: ${perc}%"></div></div></div>`;
             });
 
-            // Investimentos
             let tbodyInv = document.getElementById('tabela-investimentos'); tbodyInv.innerHTML = '';
             dados.investimentos.forEach(inv => {
                 let totalInv = inv.qtd * inv.preco;
                 tbodyInv.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3">${inv.data}</td><td class="p-3">${inv.tipo}</td><td class="p-3 text-purple-400 font-bold">${inv.ativo}</td><td class="p-3">${inv.qtd}</td><td class="p-3">R$ ${inv.preco.toFixed(2)}</td><td class="p-3 font-semibold">R$ ${totalInv.toFixed(2)}</td></tr>`;
+            });
+
+            let tbodyLim = document.getElementById('tabela-limites'); tbodyLim.innerHTML = '';
+            dados.categorias.forEach(cat => {
+                let teto = dados.limites[cat] || 0;
+                let realizado = dados.lancamentos.filter(l => l.cat === cat && l.tipo === 'Despesa').reduce((acc, l) => acc + l.valor, 0);
+                let status = teto > 0 ? (realized > teto ? '<span class="text-rose-500 font-bold">Estourado</span>' : '<span class="text-emerald-400 font-bold">Dentro do Teto</span>') : '<span class="text-slate-500">Sem limite</span>';
+                tbodyLim.innerHTML += `<tr class="border-b border-purple-950/50"><td class="p-3">${cat}</td><td class="p-3">${teto > 0 ? 'R$ ' + teto.toFixed(2) : '-'}</td><td class="p-3">R$ ${realized.toFixed(2)}</td><td class="p-3">${status}</td></tr>`;
             });
         }
 
