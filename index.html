@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ControlCash - Sistema Financeiro Integrado</title>
+    <title>ControlCash Pro - Sistema Financeiro Avançado</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
-                extend: {
-                    colors: { panel: '#090514', card: '#130a24' }
-                }
+                extend: { colors: { panel: '#090514', card: '#130a24' } }
             }
         }
     </script>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-purple-50/30 to-white dark:from-[#090514] dark:via-[#130a24] dark:to-[#020005] text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
     
-    <!-- TELA DE LOGIN -->
-    <div id="tela-login" class="fixed inset-0 bg-slate-950/90 dark:bg-[#06020a]/95 z-50 flex items-center justify-center p-4 backdrop-blur-md">
+    <!-- TELA DE LOGIN SEGURA -->
+    <div id="tela-login" class="fixed inset-0 bg-slate-950/95 dark:bg-[#06020a]/98 z-50 flex items-center justify-center p-4 backdrop-blur-md">
         <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/40 p-8 rounded-3xl shadow-2xl max-w-md w-full space-y-6 text-center">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 mx-auto flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-purple-500/30">C</div>
             <div>
-                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">ControlCash</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Acesse seu painel financeiro com segurança</p>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">ControlCash Pro</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Ambiente financeiro robusto e seguro</p>
             </div>
             <form onsubmit="fazerLogin(event)" class="space-y-4 text-left">
                 <div>
@@ -35,44 +34,43 @@
                     <label class="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">Senha</label>
                     <input type="password" id="login-senha" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-purple-900/50 rounded-xl p-3 text-sm text-slate-800 dark:text-slate-200">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-3 rounded-xl text-sm shadow-lg shadow-purple-600/20">Entrar no Sistema</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-3 rounded-xl text-sm shadow-lg shadow-purple-600/20">Acessar Painel</button>
             </form>
-            <button onclick="loginComGoogle()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium py-3 rounded-xl text-sm flex items-center justify-center gap-3">Continuar com a Conta Google</button>
+            <button onclick="loginComGoogle()" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 font-medium py-3 rounded-xl text-sm flex items-center justify-center gap-3">Entrar com a Conta Google</button>
         </div>
     </div>
 
-    <!-- NAVBAR SUPERIOR PROFISSIONAL -->
+    <!-- NAVBAR SUPERIOR COMPLETA -->
     <header class="bg-white/90 dark:bg-[#0b0517]/90 backdrop-blur-md border-b border-slate-200 dark:border-purple-900/30 sticky top-0 z-40 px-4 py-2.5">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-x-auto scrollbar-none">
             <div class="flex items-center gap-2 shrink-0">
                 <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-md">C</div>
-                <span class="font-bold tracking-wider bg-gradient-to-r from-purple-600 to-indigo-400 bg-clip-text text-transparent text-base">ControlCash</span>
+                <span class="font-bold tracking-wider bg-gradient-to-r from-purple-600 to-indigo-400 bg-clip-text text-transparent text-base">ControlCash Pro</span>
             </div>
             <nav class="flex items-center gap-1 shrink-0 text-xs font-medium">
-                <button onclick="switchTab('dashboard')" class="nav-sup px-2.5 py-1.5 rounded-lg text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50">Dashboard</button>
-                <button onclick="switchTab('lancamentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Lançamentos</button>
-                <button onclick="switchTab('categorias')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Categorias</button>
-                <button onclick="switchTab('contas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Contas</button>
-                <button onclick="switchTab('cartao')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Cartões</button>
-                <button onclick="switchTab('dividas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Dívidas</button>
-                <button onclick="switchTab('metas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Metas</button>
-                <button onclick="switchTab('limites')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Limites</button>
-                <button onclick="switchTab('investimentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400">Investimentos</button>
+                <button onclick="switchTab('dashboard')" class="nav-sup px-2.5 py-1.5 rounded-lg text-purple-400 bg-purple-950/50">Dashboard</button>
+                <button onclick="switchTab('lancamentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Lançamentos</button>
+                <button onclick="switchTab('categorias')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Categorias</button>
+                <button onclick="switchTab('contas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Contas</button>
+                <button onclick="switchTab('cartao')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Cartões</button>
+                <button onclick="switchTab('dividas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Dívidas</button>
+                <button onclick="switchTab('metas')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Metas</button>
+                <button onclick="switchTab('limites')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Limites</button>
+                <button onclick="switchTab('investimentos')" class="nav-sup px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white">Investimentos</button>
             </nav>
             <div class="shrink-0 relative">
-                <button id="btn-menu" onclick="toggleMenuOpcoes(event)" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center">
+                <button id="btn-menu" onclick="toggleMenuOpcoes(event)" class="p-2 rounded-xl bg-slate-100 dark:bg-purple-950/40 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-purple-800/40 flex flex-col justify-center gap-1 w-9 h-9 items-center cursor-pointer">
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                     <span class="w-4 h-0.5 bg-current rounded-full pointer-events-none"></span>
                 </button>
-                <!-- MENU EXPANSÍVEL CORRIGIDO -->
                 <div id="menu-opcoes" class="hidden absolute right-0 top-12 w-64 bg-white dark:bg-[#130a24] border border-slate-200 dark:border-purple-900/50 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
                     <button onclick="abrirModalCsv()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">📁 Importar Extrato CSV</button>
-                    <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-emerald-500 hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">🤖 Conectar WhatsApp / IA</button>
+                    <button onclick="abrirModalWhatsapp()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-emerald-400 hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">🤖 Conectar WhatsApp / IA</button>
                     <hr class="border-slate-100 dark:border-purple-950 my-1">
                     <button onclick="alternarTema()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium hover:bg-purple-50 dark:hover:bg-purple-950/50 flex items-center gap-2">🎨 Alternar Tema</button>
-                    <button onclick="reiniciarDoZero()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 flex items-center gap-2">⚠️ Reiniciar do Zero (Apagar Dados)</button>
-                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-500 hover:bg-slate-100 flex items-center gap-2">🚪 Sair da Conta</button>
+                    <button onclick="reiniciarDoZero()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 flex items-center gap-2">⚠️ Reiniciar do Zero (Apagar Tudo)</button>
+                    <button onclick="fazerLogout()" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-400 hover:bg-slate-100 flex items-center gap-2">🚪 Sair da Conta</button>
                 </div>
             </div>
         </div>
@@ -81,48 +79,40 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-1 space-y-6">
         
-        <!-- DASHBOARD -->
+        <!-- DASHBOARD COM GRÁFICOS REAIS -->
         <div id="tab-dashboard" class="space-y-6">
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-4 rounded-2xl flex justify-between items-center shadow-sm">
-                <div class="flex gap-2 text-sm font-medium">
-                    <button class="px-3 py-1.5 rounded-lg bg-purple-600 text-white shadow-sm">Esse mês</button>
-                    <button class="px-3 py-1.5 rounded-lg text-slate-400">Hoje</button>
-                    <button class="px-3 py-1.5 rounded-lg text-slate-400">Esse ano</button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
+                    <span class="text-xs text-slate-400 uppercase font-medium">Receitas Totais</span>
+                    <h3 id="dash-receitas" class="text-2xl font-bold text-emerald-400 mt-1">R$ 0,00</h3>
                 </div>
-                <div class="text-xs text-slate-400 font-medium">Ciclo Ativo: <span class="text-purple-400 font-bold">Novembro de 2026</span></div>
-            </div>
-
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
-                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Evolução de Despesas por Mês</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Agosto</span><p class="text-sm font-bold mt-1">R$ 6.714,90</p></div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Setembro</span><p class="text-sm font-bold mt-1">R$ 3.275,45</p></div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Outubro</span><p class="text-sm font-bold mt-1">R$ 1.393,91</p></div>
-                    <div class="bg-purple-50 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-500/30"><span class="text-[10px] font-semibold text-purple-400">Novembro (Atual)</span><p class="text-sm font-bold text-purple-300 mt-1" id="dash-tot-mes">R$ 0,00</p></div>
-                    <div class="bg-slate-50 dark:bg-slate-950/50 p-3 rounded-xl"><span class="text-[10px] text-slate-400">Dezembro</span><p class="text-sm font-bold mt-1">R$ 774,84</p></div>
+                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
+                    <span class="text-xs text-slate-400 uppercase font-medium">Despesas Totais</span>
+                    <h3 id="dash-despesas" class="text-2xl font-bold text-rose-400 mt-1">R$ 0,00</h3>
+                </div>
+                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
+                    <span class="text-xs text-slate-400 uppercase font-medium">Saldo Líquido em Contas</span>
+                    <h3 id="dash-saldo-total" class="text-2xl font-bold text-purple-400 mt-1">R$ 0,00</h3>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <h4 class="text-sm font-bold text-emerald-400">Receitas</h4>
-                    <h3 id="dash-receitas" class="text-2xl font-bold">R$ 0,00</h3>
+            <!-- BLOCO DE GRÁFICOS Chart.js -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-200 mb-4">Fluxo de Caixa (Receitas vs Despesas)</h4>
+                    <div class="relative h-64"><canvas id="chartFluxo"></canvas></div>
                 </div>
-                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm space-y-4">
-                    <h4 class="text-sm font-bold text-rose-400">Despesas</h4>
-                    <h3 id="dash-despesas" class="text-2xl font-bold">R$ 0,00</h3>
+                <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-200 mb-4">Despesas por Categoria</h4>
+                    <div class="relative h-64"><canvas id="chartCategorias"></canvas></div>
                 </div>
-            </div>
-            <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-5 rounded-2xl">
-                <span class="text-xs text-slate-400 uppercase font-medium">Saldo Disponível em Contas</span>
-                <h3 id="dash-saldo-total" class="text-xl font-bold text-purple-400 mt-1">R$ 0,00</h3>
             </div>
         </div>
 
         <!-- LANÇAMENTOS -->
         <div id="tab-lancamentos" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-4">Novo Lançamento</h3>
+                <h3 class="text-base font-semibold mb-4">Novo Lançamento Completo</h3>
                 <form id="form-lancamento" onsubmit="adicionarLancamento(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <input type="date" id="lanc-data" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <select id="lanc-tipo" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"><option value="Despesa">Despesa</option><option value="Receita">Receita</option></select>
@@ -130,7 +120,7 @@
                     <input type="number" step="0.01" id="lanc-valor" placeholder="Valor (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <select id="lanc-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
                     <select id="lanc-conta" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
-                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-2">Salvar Lançamento</button>
+                    <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-2">Salvar Transação</button>
                 </form>
             </div>
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl overflow-x-auto">
@@ -146,21 +136,21 @@
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <h3 class="text-base font-semibold mb-4">Gerenciar Categorias</h3>
                 <form onsubmit="adicionarCategoria(event)" class="flex gap-4 mb-6">
-                    <input type="text" id="cat-nome" placeholder="Nova Categoria (ex: Lazer, Saúde)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
+                    <input type="text" id="cat-nome" placeholder="Nova Categoria (ex: Investimentos, Lazer)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm flex-1">
                     <button type="submit" class="bg-purple-600 text-white px-6 rounded-xl text-sm font-medium">Adicionar</button>
                 </form>
                 <div id="lista-categorias" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
             </div>
         </div>
 
-        <!-- CONTAS BANCÁRIAS -->
+        <!-- CONTAS BANCÁRIAS (ATÉ 5) -->
         <div id="tab-contas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-base font-semibold">Contas Bancárias (Máx 5)[cite: 17]</h3>
                     <span id="contas-contador" class="text-xs text-purple-400 font-bold">0 / 5</span>
                 </div>
-                <form id="form-conta" onsubmit="adicionarConta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <form onsubmit="adicionarConta(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <input type="text" id="conta-nome" placeholder="Nome da Conta (ex: Nubank)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="conta-saldo" placeholder="Saldo Inicial (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 rounded-xl text-sm">Adicionar Conta</button>
@@ -169,7 +159,7 @@
             </div>
         </div>
 
-        <!-- CARTÃO DE CRÉDITO -->
+        <!-- CARTÕES DE CRÉDITO (ATÉ 8) -->
         <div id="tab-cartao" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
@@ -179,8 +169,8 @@
                 <form onsubmit="adicionarCartao(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <input type="text" id="cc-nome" placeholder="Nome do Cartão" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="cc-limite" placeholder="Limite Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" id="cc-feixa" placeholder="Dia Fechamento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <input type="number" id="cc-venc" placeholder="Dia Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-fechamento" placeholder="Dia Fechamento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
+                    <input type="number" id="cc-vencimento" placeholder="Dia Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 rounded-xl text-sm sm:col-span-4">Cadastrar Cartão</button>
                 </form>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="grid-cartoes"></div>
@@ -190,14 +180,14 @@
         <!-- DÍVIDAS / EMPRÉSTIMOS -->
         <div id="tab-dividas" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
-                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos</h3>
+                <h3 class="text-base font-semibold mb-2">Controle de Dívidas & Empréstimos (Cronograma)</h3>
                 <form onsubmit="adicionarDivida(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                     <input type="text" id="div-nome" placeholder="Dívida / Empréstimo" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.01" id="div-valor" placeholder="Valor Total (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" id="div-parcelas" placeholder="Total de Parcelas" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="date" id="div-venc" placeholder="Primeiro Vencimento" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
                     <input type="number" step="0.1" id="div-juros" placeholder="Juros % a.m." required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar Dívida</button>
+                    <button type="submit" class="bg-rose-600 text-white font-medium p-3 rounded-xl text-sm sm:col-span-5">Cadastrar Dívida Inteligente</button>
                 </form>
                 <table class="w-full text-left text-sm">
                     <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Prioridade</th><th class="p-3">Dívida</th><th class="p-3">Valor Total</th><th class="p-3">Parcelas</th><th class="p-3">Vencimento</th><th class="p-3">Juros</th></tr></thead>
@@ -226,7 +216,7 @@
                 <form onsubmit="definirLimite(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <select id="limite-cat" class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm"></select>
                     <input type="number" step="0.01" id="limite-valor" placeholder="Teto de Gasto (R$)" required class="bg-slate-950 border border-purple-900/40 rounded-xl p-3 text-sm">
-                    <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm sm:col-span-2">Definir Limite</button>
+                    <button type="submit" class="bg-purple-600 text-white p-3 rounded-xl text-sm sm:col-span-2">Definir Teto</button>
                 </form>
                 <table class="w-full text-left text-sm">
                     <thead><tr class="border-b border-purple-950 text-slate-400 text-xs"><th class="p-3">Categoria</th><th class="p-3">Teto Planejado</th><th class="p-3">Realizado</th><th class="p-3">Status</th></tr></thead>
@@ -235,7 +225,7 @@
             </div>
         </div>
 
-        <!-- INVESTIMENTOS -->
+        <!-- INVESTIMENTOS (ESTILO INVESTIDOR10) -->
         <div id="tab-investimentos" class="hidden space-y-6">
             <div class="bg-white dark:bg-[#120822] border border-slate-200 dark:border-purple-900/30 p-6 rounded-2xl">
                 <h3 class="text-base font-semibold mb-2">Investimentos (Estilo Investidor10)[cite: 12, 13]</h3>
@@ -269,27 +259,29 @@
     <div id="modal-whatsapp" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white dark:bg-[#120822] border border-purple-900/50 p-6 rounded-3xl max-w-md w-full space-y-4">
             <h3 class="text-lg font-bold text-emerald-400">🤖 WhatsApp & IA</h3>
-            <p class="text-xs text-slate-400">Webhook pronto para receber seus gastos via bot.</p>
+            <p class="text-xs text-slate-400">Webhook pronto para receber seus lançamentos via bot.</p>
             <button onclick="fecharModais()" class="w-full bg-slate-800 text-slate-200 py-2.5 rounded-xl text-sm font-medium">Fechar</button>
         </div>
     </div>
 
+    <!-- SCRIPT COMPLETO E ROBUSTO -->
     <script>
-        let dados = JSON.parse(localStorage.getItem('control_cash_diou_v7')) || { 
+        let dados = JSON.parse(localStorage.getItem('control_cash_pro')) || { 
             lancamentos: [], dividas: [], investimentos: [], 
             contas: [{nome: 'Conta Principal', saldo: 1000}], 
-            cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer'], metas: [], limites: {} 
+            cartoes: [], categorias: ['Alimentação', 'Moradia', 'Transporte', 'Lazer', 'Investimentos'], metas: [], limites: {} 
         };
+
         let usuarioLogado = localStorage.getItem('control_cash_user');
         if (usuarioLogado) document.getElementById('tela-login').classList.add('hidden');
 
         function fazerLogin(e) { e.preventDefault(); localStorage.setItem('control_cash_user', document.getElementById('login-email').value); document.getElementById('tela-login').classList.add('hidden'); }
         function loginComGoogle() { localStorage.setItem('control_cash_user', 'google@gmail.com'); document.getElementById('tela-login').classList.add('hidden'); }
-        function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.add('hidden'); }
+        function fazerLogout() { localStorage.removeItem('control_cash_user'); document.getElementById('tela-login').classList.remove('hidden'); }
 
         function reiniciarDoZero() {
-            if(confirm('Tem certeza que deseja apagar todos os dados e reiniciar do zero? Essa ação não pode ser desfeita.')) {
-                localStorage.removeItem('control_cash_diou_v7');
+            if(confirm('Tem certeza que deseja apagar todos os dados e reiniciar do zero?')) {
+                localStorage.removeItem('control_cash_pro');
                 location.reload();
             }
         }
@@ -321,20 +313,19 @@
 
         function adicionarConta(e) {
             e.preventDefault();
-            if (dados.contas.length >= 5) { alert('Limite máximo de 5 contas atingido![cite: 17]'); return; }
+            if (dados.contas.length >= 5) { alert('Limite de 5 contas atingido[cite: 17]!'); return; }
             dados.contas.push({ nome: document.getElementById('conta-nome').value, saldo: parseFloat(document.getElementById('conta-saldo').value) });
             salvarEAtualizar(); document.getElementById('form-conta').reset();
         }
 
         function adicionarCartao(e) {
             e.preventDefault();
-            if (dados.cartoes.length >= 8) { alert('Limite máximo de 8 cartões atingido![cite: 16]'); return; }
+            if (dados.cartoes.length >= 8) { alert('Limite de 8 cartões atingido[cite: 16]!'); return; }
             dados.cartoes.push({
                 nome: document.getElementById('cc-nome').value,
                 limite: parseFloat(document.getElementById('cc-limite').value),
-                fechamento: document.getElementById('cc-feixa').value,
-                vencimento: document.getElementById('cc-venc').value,
-                usado: 0
+                fechamento: document.getElementById('cc-fechamento').value,
+                vencimento: document.getElementById('cc-vencimento').value
             });
             salvarEAtualizar(); e.target.reset();
         }
@@ -385,7 +376,7 @@
         function definirLimite(e) {
             e.preventDefault();
             dados.limites[document.getElementById('limite-cat').value] = parseFloat(document.getElementById('limite-valor').value);
-            salvarEAtualizar(); alert('Limite salvo!');
+            salvarEAtualizar(); alert('Teto de gasto salvo!');
         }
 
         function adicionarInvestimento(e) {
@@ -401,8 +392,51 @@
         }
 
         function salvarEAtualizar() {
-            localStorage.setItem('control_cash_diou_v7', JSON.stringify(dados));
+            localStorage.setItem('control_cash_pro', JSON.stringify(dados));
             atualizarTudo();
+        }
+
+        // Variáveis globais para os gráficos
+        let chartFluxoInstancia = null;
+        let chartCatInstancia = null;
+
+        function atualizarGraficos(totalRec, totalDesp) {
+            // Gráfico Fluxo de Caixa
+            const ctxFluxo = document.getElementById('chartFluxo').getContext('2d');
+            if(chartFluxoInstancia) chartFluxoInstancia.destroy();
+            chartFluxoInstancia = new Chart(ctxFluxo, {
+                type: 'bar',
+                data: {
+                    labels: ['Receitas', 'Despesas'],
+                    datasets: [{
+                        label: 'R$',
+                        data: [totalRec, totalDesp],
+                        backgroundColor: ['#10b981', '#f43f5e'],
+                        borderRadius: 8
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            // Gráfico Categorias
+            const ctxCat = document.getElementById('chartCategorias').getContext('2d');
+            let catsMap = {};
+            dados.lancamentos.filter(l => l.tipo === 'Despesa').forEach(l => {
+                catsMap[l.cat] = (catsMap[l.cat] || 0) + l.valor;
+            });
+            
+            if(chartCatInstancia) chartCatInstancia.destroy();
+            chartCatInstancia = new Chart(ctxCat, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(catsMap).length ? Object.keys(catsMap) : ['Sem dados'],
+                    datasets: [{
+                        data: Object.keys(catsMap).length ? Object.values(catsMap) : [1],
+                        backgroundColor: ['#9333ea', '#3b82f6', '#10b981', '#f59e0b', '#f43f5e', '#6366f1']
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
         }
 
         function atualizarTudo() {
@@ -411,13 +445,13 @@
             let totalContas = 0;
             dados.contas.forEach((c) => {
                 totalContas += c.saldo;
-                gridContas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40"><h4 class="font-bold">${c.nome}</h4><p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p></div>`;
+                gridContas.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/45"><h4 class="font-bold">${c.nome}</h4><p class="text-lg font-semibold text-purple-400 mt-1">R$ ${c.saldo.toFixed(2)}</p></div>`;
             });
 
             document.getElementById('cartao-contador').innerText = `${dados.cartoes.length} / 8`;
             let gridCartoes = document.getElementById('grid-cartoes'); gridCartoes.innerHTML = '';
             dados.cartoes.forEach(cc => {
-                gridCartoes.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/40 space-y-2"><div class="flex justify-between"><h4 class="font-bold">${cc.nome}</h4><span class="text-xs text-slate-400">Venc. Dia ${cc.vencimento}</span></div><p class="text-xs text-slate-400">Limite Total: R$ ${cc.limite.toFixed(2)}</p></div>`;
+                gridCartoes.innerHTML += `<div class="bg-slate-950 p-4 rounded-xl border border-purple-900/45 space-y-1"><div class="flex justify-between"><h4 class="font-bold">${cc.nome}</h4><span class="text-xs text-slate-400">Venc. ${cc.vencimento}</span></div><p class="text-xs text-slate-400">Limite: R$ ${cc.limite.toFixed(2)}</p></div>`;
             });
 
             let selCat = document.getElementById('lanc-cat'); selCat.innerHTML = '';
@@ -431,7 +465,7 @@
             dados.contas.forEach(c => selConta.innerHTML += `<option value="${c.nome}">${c.nome}</option>`);
 
             let listaCat = document.getElementById('lista-categorias'); listaCat.innerHTML = '';
-            dados.categorias.forEach(cat => listaCat.innerHTML += `<div class="bg-slate-950 p-3 rounded-xl border border-purple-900/30 flex justify-between"><span>${cat}</span></div>`);
+            dados.categorias.forEach(cat => listaCat.innerHTML += `<div class="bg-slate-950 p-3 rounded-xl border border-purple-900/30"><span>${cat}</span></div>`);
 
             let totalRec = 0, totalDesp = 0;
             let tbodyLanc = document.getElementById('tabela-lancamentos'); tbodyLanc.innerHTML = '';
@@ -442,8 +476,10 @@
 
             document.getElementById('dash-receitas').innerText = `R$ ${totalRec.toFixed(2)}`;
             document.getElementById('dash-despesas').innerText = `R$ ${totalDesp.toFixed(2)}`;
-            document.getElementById('dash-tot-mes').innerText = `R$ ${totalDesp.toFixed(2)}`;
             document.getElementById('dash-saldo-total').innerText = `R$ ${totalContas.toFixed(2)}`;
+
+            // Atualiza Gráficos
+            atualizarGraficos(totalRec, totalDesp);
 
             let tbodyDiv = document.getElementById('tabela-dividas'); tbodyDiv.innerHTML = '';
             [...dados.dividas].sort((a,b)=>b.juros-a.juros).forEach((d, i) => {
